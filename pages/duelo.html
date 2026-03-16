@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="TuNombre" />
+    <meta name="description" content="Duelo de Magos - Enfrenta a dos personajes de Harry Potter" />
+    <title>Duelo de Magos | Hogwarts Castle</title>
+    <link rel="icon" type="image/x-icon" href="../img/favicon.png" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cinzel+Decorative:wght@400;700&family=IM+Fell+English:ital,wght@0,400;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Crimson+Text:ital,wght@0,400;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="logo">
+          <img src="../img/logo.png" alt="Logo" class="logo-symbol" />
+          <a href="../index.html" class="logo-text">Hogwarts Castle</a>
+        </div>
+        <nav class="main-nav">
+          <button class="nav-toggle" aria-label="Abrir menú">&#9776;</button>
+          <ul class="nav-list">
+            <li><a href="../index.html" class="nav-link">Inicio</a></li>
+            <li><a href="libro.html" class="nav-link">El Gran Libro</a></li>
+            <li><a href="sombrero.html" class="nav-link">El Sombrero</a></li>
+            <li><a href="duelo.html" class="nav-link active">Duelo de Magos</a></li>
+            <li><a href="sobre-mi.html" class="nav-link">Sobre mí</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="site-main">
+
+      <!-- PAGE HERO -->
+      <section class="page-hero">
+        <div class="page-hero__content">
+          <p class="hero-eyebrow">Arena mágica</p>
+          <h1 class="page-hero__title">Duelo de Magos</h1>
+          <p class="page-hero__desc">
+            Selecciona dos personajes y enfréntalos en un duelo mágico.
+          </p>
+        </div>
+      </section>
+
+      <!-- SELECCIÓN DE MAGOS -->
+      <section class="duel-section">
+        <div class="duel-container">
+
+          <!-- MAGO 1 — elegido por el jugador -->
+          <div class="duelist-panel" id="panel-1">
+            <h2 class="duelist-panel__title">Tu mago</h2>
+            <select class="duelist-select" id="select-1" aria-label="Seleccionar tu mago">
+              <option value="">— Elige un mago —</option>
+            </select>
+            <div class="duelist-card hidden" id="card-1"></div>
+          </div>
+
+          <!-- VS -->
+          <div class="duel-vs" aria-hidden="true">
+            <span class="duel-vs__text">VS</span>
+            <button class="btn btn--primary duel-btn" id="btn-duel">
+              ¡Iniciar duelo!
+            </button>
+          </div>
+
+          <!-- MAGO 2 — elegido por la CPU -->
+          <div class="duelist-panel" id="panel-2">
+            <h2 class="duelist-panel__title">Rival de la CPU</h2>
+            <p class="cpu-hint" id="cpu-hint">
+              La CPU elegirá a su campeón cuando inicies el duelo.
+            </p>
+            <div class="duelist-card hidden" id="card-2"></div>
+          </div>
+
+        </div>
+
+        <!-- RESULTADO DEL DUELO -->
+        <div class="duel-result hidden" id="duel-result">
+          <p class="duel-result__text" id="duel-result-text"></p>
+        </div>
+
+        <!-- ESTADOS -->
+        <div class="loading-state hidden" id="duel-loading">
+          <p class="loading-text">Cargando magos...</p>
+        </div>
+        <div class="error-state hidden" id="duel-error">
+          <p class="error-text" id="duel-error-text"></p>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-brand">Hogwarts Castle</p>
+        <p class="footer-copy">Proyecto académico · LMSGI · C.F.G.S. DAM</p>
+        <p class="footer-disclaimer">Este proyecto no está afiliado con J.K. Rowling ni Warner Bros.</p>
+      </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+  </body>
+</html>

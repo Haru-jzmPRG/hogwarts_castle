@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="TuNombre" />
+    <meta name="description" content="El Sombrero Seleccionador - Descubre tu casa en Hogwarts" />
+    <title>El Sombrero Seleccionador | Hogwarts Castle</title>
+    <link rel="icon" type="image/x-icon" href="../img/favicon.png" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cinzel+Decorative:wght@400;700&family=IM+Fell+English:ital,wght@0,400;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Crimson+Text:ital,wght@0,400;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="logo">
+          <img src="../img/logo.png" alt="Logo" class="logo-symbol" />
+          <a href="../index.html" class="logo-text">Hogwarts Castle</a>
+        </div>
+        <nav class="main-nav">
+          <button class="nav-toggle" aria-label="Abrir menú">&#9776;</button>
+          <ul class="nav-list">
+            <li><a href="../index.html" class="nav-link">Inicio</a></li>
+            <li><a href="libro.html" class="nav-link">El Gran Libro</a></li>
+            <li><a href="sombrero.html" class="nav-link active">El Sombrero</a></li>
+            <li><a href="duelo.html" class="nav-link">Duelo de Magos</a></li>
+            <li><a href="sobre-mi.html" class="nav-link">Sobre mí</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="site-main">
+
+      <!-- PAGE HERO -->
+      <section class="page-hero">
+        <div class="page-hero__content">
+          <p class="hero-eyebrow">Ceremonia de selección</p>
+          <h1 class="page-hero__title">El Sombrero Seleccionador</h1>
+          <p class="page-hero__desc">
+            Responde con sinceridad. El sombrero conoce tu corazón mejor que tú mismo.
+          </p>
+        </div>
+      </section>
+
+      <!-- QUIZ -->
+      <section class="quiz-section" id="quiz-section">
+        <div class="quiz-container">
+
+          <!-- Sombrero animado -->
+          <div class="hat-wrapper" aria-hidden="true">
+            <img src="../img/sombrero160.png" alt="Sombrero Seleccionador" class="hat" id="hat-icon" />
+            <div class="hat-speech hidden" id="hat-speech">
+              <p id="hat-speech-text"></p>
+            </div>
+          </div>
+
+          <!-- Pregunta actual -->
+          <div class="question-card" id="question-card">
+            <p class="question-number" id="question-number">Pregunta 1 de 5</p>
+            <p class="question-text" id="question-text"></p>
+            <div class="answers-grid" id="answers-grid">
+              <!-- Respuestas generadas por JS -->
+            </div>
+          </div>
+
+          <!-- Barra de progreso -->
+          <div class="progress-bar-wrapper" aria-label="Progreso del test">
+            <div class="progress-bar" id="progress-bar"></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- RESULTADO -->
+      <section class="result-section hidden" id="result-section">
+        <div class="result-container" id="result-container">
+          <img src="../img/sombrero180.png" alt="" class="result-hat" aria-hidden="true" />
+          <p class="result-eyebrow">Has sido seleccionado en</p>
+          <img src="" alt="" id="result-house-shield" class="result-house-shield hidden" />
+          <h2 class="result-house-name" id="result-house-name"></h2>
+          <p class="result-house-desc" id="result-house-desc"></p>
+
+          <!-- Personajes famosos de la casa (desde API) -->
+          <div class="result-members">
+            <h3 class="result-members__title">Compañeros de casa ilustres</h3>
+            <div class="result-members__grid" id="result-members-grid">
+              <!-- Generado dinámicamente -->
+            </div>
+            <div class="loading-state hidden" id="members-loading">
+              <p class="loading-text">Consultando el registro mágico...</p>
+            </div>
+            <div class="error-state hidden" id="members-error">
+              <p class="error-text" id="members-error-text"></p>
+            </div>
+          </div>
+
+          <button class="btn btn--primary" id="btn-retry">Volver a intentarlo</button>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-brand">Hogwarts Castle</p>
+        <p class="footer-copy">Proyecto académico · LMSGI · C.F.S.G. DAM</p>
+        <p class="footer-disclaimer">Este proyecto no está afiliado con J.K. Rowling ni Warner Bros.</p>
+      </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+  </body>
+</html>

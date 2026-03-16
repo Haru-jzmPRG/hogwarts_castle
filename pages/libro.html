@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="TuNombre" />
+    <meta name="description" content="El Gran Libro - Explora personajes y hechizos de Harry Potter" />
+    <title>El Gran Libro | Hogwarts Castle</title>
+    <link rel="icon" type="image/x-icon" href="../img/favicon.png" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cinzel+Decorative:wght@400;700&family=IM+Fell+English:ital,wght@0,400;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Crimson+Text:ital,wght@0,400;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="logo">
+          <img src="../img/logo.png" alt="Logo" class="logo-symbol" />
+          <a href="../index.html" class="logo-text">Hogwarts Castle</a>
+        </div>
+        <nav class="main-nav">
+          <button class="nav-toggle" aria-label="Abrir menú">&#9776;</button>
+          <ul class="nav-list">
+            <li><a href="../index.html" class="nav-link">Inicio</a></li>
+            <li><a href="libro.html" class="nav-link active">El Gran Libro</a></li>
+            <li><a href="sombrero.html" class="nav-link">El Sombrero</a></li>
+            <li><a href="duelo.html" class="nav-link">Duelo de Magos</a></li>
+            <li><a href="sobre-mi.html" class="nav-link">Sobre mí</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="site-main">
+
+      <!-- ================================================
+           PORTADA DEL LIBRO (estado inicial)
+           ================================================ -->
+      <section class="book-cover" id="book-cover">
+        <div class="book-cover__inner">
+          <div class="book-cover__ornament" aria-hidden="true">— ✦ —</div>
+          <p class="book-cover__subtitle">Archivo Mágico de Hogwarts</p>
+          <h1 class="book-cover__title">El Gran Libro</h1>
+          <p class="book-cover__edition">Primera Edición · Año Mágico</p>
+          <div class="book-cover__divider" aria-hidden="true"></div>
+          <p class="book-cover__desc">
+            Registro completo de magos, brujas y criaturas del universo de Harry Potter,
+            junto al grimorio oficial de hechizos de Hogwarts.
+          </p>
+          <div class="loading-state" id="loading-state">
+            <p class="loading-text">Cargando el archivo mágico...</p>
+          </div>
+          <button class="btn btn--primary book-cover__btn hidden" id="btn-open-book">
+            Abrir el libro
+          </button>
+          <div class="error-state hidden" id="error-state">
+            <p class="error-text" id="error-message"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================
+           CONTENIDO DEL LIBRO (oculto hasta abrir)
+           ================================================ -->
+      <div class="book-content hidden" id="book-content">
+
+        <!-- ÍNDICE DE CAPÍTULOS -->
+        <section class="book-index" id="book-index">
+          <div class="book-index__header">
+            <p class="book-index__label">Índice de capítulos</p>
+            <h2 class="book-index__title">¿Qué capítulo deseas consultar?</h2>
+          </div>
+          <div class="book-index__chapters">
+
+            <button class="chapter-btn chapter-btn--all active" id="btn-all"
+                    aria-label="Ver todos los personajes">
+              <span class="chapter-btn__num">I</span>
+              <span class="chapter-btn__name">Todos los magos</span>
+              <span class="chapter-btn__count" id="count-all"></span>
+            </button>
+
+            <button class="chapter-btn chapter-btn--gryffindor" id="btn-gryffindor"
+                    aria-label="Ver personajes de Gryffindor">
+              <img src="../img/escudo_gryffindor.png" alt="Gryffindor" class="chapter-btn__escudo" />
+              <span class="chapter-btn__num">II</span>
+              <span class="chapter-btn__name">Gryffindor</span>
+              <span class="chapter-btn__count" id="count-gryffindor"></span>
+            </button>
+
+            <button class="chapter-btn chapter-btn--slytherin" id="btn-slytherin"
+                    aria-label="Ver personajes de Slytherin">
+              <img src="../img/escudo_slytherin.png" alt="Slytherin" class="chapter-btn__escudo" />
+              <span class="chapter-btn__num">III</span>
+              <span class="chapter-btn__name">Slytherin</span>
+              <span class="chapter-btn__count" id="count-slytherin"></span>
+            </button>
+
+            <button class="chapter-btn chapter-btn--ravenclaw" id="btn-ravenclaw"
+                    aria-label="Ver personajes de Ravenclaw">
+              <img src="../img/escudo_ravenclaw.png" alt="Ravenclaw" class="chapter-btn__escudo" />
+              <span class="chapter-btn__num">IV</span>
+              <span class="chapter-btn__name">Ravenclaw</span>
+              <span class="chapter-btn__count" id="count-ravenclaw"></span>
+            </button>
+
+            <button class="chapter-btn chapter-btn--hufflepuff" id="btn-hufflepuff"
+                    aria-label="Ver personajes de Hufflepuff">
+              <img src="../img/escudo_hufflepuf.png" alt="Hufflepuff" class="chapter-btn__escudo" />
+              <span class="chapter-btn__num">V</span>
+              <span class="chapter-btn__name">Hufflepuff</span>
+              <span class="chapter-btn__count" id="count-hufflepuff"></span>
+            </button>
+
+            <button class="chapter-btn chapter-btn--spells" id="btn-spells"
+                    aria-label="Ver el grimorio de hechizos">
+              <span class="chapter-btn__num">VI</span>
+              <span class="chapter-btn__name">Grimorio de Hechizos</span>
+              <span class="chapter-btn__count" id="count-spells"></span>
+            </button>
+
+          </div>
+        </section>
+
+        <!-- ============================================
+             SECCIÓN DE PERSONAJES
+             ============================================ -->
+        <section class="characters-section" id="characters-section">
+
+          <!-- Cabecera de capítulo -->
+          <div class="chapter-header">
+            <h2 class="chapter-header__title" id="chapter-title">Todos los magos</h2>
+            <p class="chapter-header__info" id="results-count" aria-live="polite"></p>
+          </div>
+
+          <!-- Flechas y grid estilo libro -->
+          <div class="book-reader">
+
+            <button class="book-arrow book-arrow--prev" id="btn-prev"
+                    aria-label="Página anterior">
+              <span aria-hidden="true">&#8249;</span>
+            </button>
+
+            <div class="book-page">
+              <div class="characters-grid" id="characters-grid"></div>
+              <p class="book-page__num" id="page-indicator" aria-live="polite"></p>
+            </div>
+
+            <button class="book-arrow book-arrow--next" id="btn-next"
+                    aria-label="Página siguiente">
+              <span aria-hidden="true">&#8250;</span>
+            </button>
+
+          </div>
+
+        </section>
+
+        <!-- ============================================
+             SECCIÓN GRIMORIO (oculta por defecto)
+             ============================================ -->
+        <section class="spells-section hidden" id="spells-section">
+          <div class="chapter-header">
+            <h2 class="chapter-header__title">Grimorio de Hechizos</h2>
+            <p class="chapter-header__info" id="spells-count" aria-live="polite"></p>
+          </div>
+
+          <!-- Lector con flechas igual que personajes -->
+          <div class="book-reader">
+            <button class="book-arrow book-arrow--prev" id="btn-spell-prev"
+                    aria-label="Página anterior de hechizos">
+              <span aria-hidden="true">&#8249;</span>
+            </button>
+            <div class="book-page spells-book-page">
+              <div class="spells-grid" id="spells-grid"></div>
+              <p class="book-page__num" id="spell-page-indicator" aria-live="polite"></p>
+            </div>
+            <button class="book-arrow book-arrow--next" id="btn-spell-next"
+                    aria-label="Página siguiente de hechizos">
+              <span aria-hidden="true">&#8250;</span>
+            </button>
+          </div>
+
+          <div class="loading-state hidden" id="spells-loading">
+            <p class="loading-text">Abriendo el grimorio...</p>
+          </div>
+          <div class="error-state hidden" id="spells-error">
+            <p class="error-text" id="spells-error-text"></p>
+          </div>
+        </section>
+
+      </div><!-- /book-content -->
+
+      <!-- MODAL DE PERSONAJE -->
+      <div class="modal-overlay hidden" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-name">
+        <div class="modal">
+          <button class="modal-close" id="modal-close" aria-label="Cerrar ficha">&#10005;</button>
+          <div class="modal-content" id="modal-content"></div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-brand">Hogwarts Castle</p>
+        <p class="footer-copy">Proyecto académico · LMSGI · C.F.G.S. DAM</p>
+        <p class="footer-disclaimer">Este proyecto no está afiliado con J.K. Rowling ni Warner Bros.</p>
+      </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+  </body>
+</html>

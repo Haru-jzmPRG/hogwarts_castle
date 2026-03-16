@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="TuNombre" />
+    <meta name="description" content="Hogwarts Castle - Explora el mundo mágico de Harry Potter" />
+    <title>Hogwarts Castle</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.png" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cinzel+Decorative:wght@400;700&family=IM+Fell+English:ital,wght@0,400;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Crimson+Text:ital,wght@0,400;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="logo">
+          <img src="img/logo.png" alt="Logo" class="logo-symbol" />
+          <span class="logo-text">Hogwarts Castle</span>
+        </div>
+        <nav class="main-nav">
+          <button class="nav-toggle" aria-label="Abrir menú">&#9776;</button>
+          <ul class="nav-list">
+            <li><a href="index.html" class="nav-link active">Inicio</a></li>
+            <li><a href="pages/libro.html" class="nav-link">El Gran Libro</a></li>
+            <li><a href="pages/sombrero.html" class="nav-link">El Sombrero</a></li>
+            <li><a href="pages/duelo.html" class="nav-link">Duelo de Magos</a></li>
+            <li><a href="pages/sobre-mi.html" class="nav-link">Sobre mí</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="site-main">
+
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-bg">
+          <div class="stars"></div>
+          <div class="stars stars--2"></div>
+          <div class="stars stars--3"></div>
+        </div>
+        <div class="hero-content">
+          <p class="hero-eyebrow">Bienvenido a</p>
+          <h1 class="hero-title">Hogwarts Castle</h1>
+          <p class="hero-subtitle">
+            Explora el universo mágico de Harry Potter.<br />
+            Personajes, casas, hechizos y duelos te esperan.
+          </p>
+          <a href="#section-title" class="btn btn--primary">Comenzar la aventura</a>
+        </div>
+        <div class="hero-deco" aria-hidden="true">
+          <span class="deco-rune">ᚠ</span>
+          <span class="deco-rune deco-rune--2">ᚢ</span>
+          <span class="deco-rune deco-rune--3">ᚦ</span>
+        </div>
+      </section>
+
+      <!-- SECCIONES -->
+      <section class="sections" id="section-title">
+        <div class="section-header" >
+          <h2 class="section-title" >Elige tu destino</h2>
+          <p class="section-desc">Tres portales al mundo mágico te aguardan</p>
+        </div>
+
+        <div class="cards-grid">
+
+          <!-- CARD 1: El Gran Libro -->
+          <article class="portal-card">
+            <div class="portal-card__glow"></div>
+            <div class="portal-card__shields" aria-hidden="true">
+              <img src="img/escudo_gryffindor.png" alt="" />
+              <img src="img/escudo_slytherin.png" alt="" />
+              <img src="img/escudo_ravenclaw.png" alt="" />
+              <img src="img/escudo_hufflepuf.png" alt="" />
+            </div>
+            <img src="img/cartas.png" alt="" class="portal-card__icon" aria-hidden="true" />
+            <h3 class="portal-card__title">El Gran Libro</h3>
+            <p class="portal-card__desc">
+              Explora todos los personajes del universo mágico. Filtra por casa,
+              descubre sus secretos y accede a la ficha completa de cada mago.
+            </p>
+            <ul class="portal-card__tags">
+              <li class="tag tag--gryffindor">Gryffindor</li>
+              <li class="tag tag--slytherin">Slytherin</li>
+              <li class="tag tag--ravenclaw">Ravenclaw</li>
+              <li class="tag tag--hufflepuff">Hufflepuff</li>
+            </ul>
+            <a href="pages/libro.html" class="btn btn--card">Abrir el libro</a>
+          </article>
+
+          <!-- CARD 2: El Sombrero -->
+          <article class="portal-card portal-card--featured">
+            <div class="portal-card__glow portal-card__glow--gold"></div>
+            <div class="portal-card__shields" aria-hidden="true">
+              <img src="img/escudo_gryffindor.png" alt="" />
+              <img src="img/escudo_slytherin.png" alt="" />
+              <img src="img/escudo_ravenclaw.png" alt="" />
+              <img src="img/escudo_hufflepuf.png" alt="" />
+            </div>
+            <img src="img/sombrero.png" alt="" class="portal-card__icon" aria-hidden="true" />
+            <h3 class="portal-card__title">El Sombrero Seleccionador</h3>
+            <p class="portal-card__desc">
+              ¿A qué casa perteneces? Responde las preguntas del sombrero y
+              descubre tu destino en Hogwarts junto a tus compañeros de casa.
+            </p>
+            <div class="portal-card__badge">Interactivo</div>
+            <a href="pages/sombrero.html" class="btn btn--card btn--gold">Ser seleccionado</a>
+          </article>
+
+          <!-- CARD 3: Duelo de Magos -->
+          <article class="portal-card">
+            <div class="portal-card__glow portal-card__glow--purple"></div>
+            <div class="portal-card__shields" aria-hidden="true">
+              <img src="img/escudo_gryffindor.png" alt="" />
+              <img src="img/escudo_slytherin.png" alt="" />
+              <img src="img/escudo_ravenclaw.png" alt="" />
+              <img src="img/escudo_hufflepuf.png" alt="" />
+            </div>
+            <img src="img/duelo.png" alt="" class="portal-card__icon" aria-hidden="true" />
+            <h3 class="portal-card__title">Duelo de Magos</h3>
+            <p class="portal-card__desc">
+              Enfrenta a dos magos en un duelo épico. Compara sus poderes,
+              consulta el grimorio de hechizos y decide quién domina la magia.
+            </p>
+            <div class="portal-card__badge portal-card__badge--purple">Versus</div>
+            <a href="pages/duelo.html" class="btn btn--card btn--purple">Iniciar duelo</a>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- CITA DECORATIVA -->
+      <section class="quote-section">
+        <blockquote class="magic-quote">
+          <p class="magic-quote__text">
+            "Es nuestra elección, mucho más que nuestras habilidades,<br />
+            la que muestra lo que realmente somos."
+          </p>
+          <cite class="magic-quote__author">— Albus Dumbledore</cite>
+        </blockquote>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-brand">Hogwarts Castle</p>
+        <p class="footer-copy">
+          Proyecto académico · LMSGI · C.F.G.S. DAM
+        </p>
+        <p class="footer-disclaimer">
+          Este proyecto no está afiliado con J.K. Rowling ni Warner Bros.
+        </p>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
