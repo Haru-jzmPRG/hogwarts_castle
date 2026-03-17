@@ -168,7 +168,6 @@ function getPlaceholderHTML(character, divClass, imgPath) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  initNavToggle();
   initNavActiveLink();
 
   var page = detectCurrentPage();
@@ -177,36 +176,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (page === "sombrero") { initSombrero(); }
   if (page === "duelo")    { initDuelo();    }
 });
-
-/**
- * @description Activa el menú hamburguesa para móvil.
- *              Usa classList.toggle() para abrir/cerrar el menú.
- *              También escucha clicks fuera del nav para cerrarlo automáticamente.
- *
- * closest() es genial: sube por el árbol DOM buscando el selector
- * más cercano. Si no encuentra nada, devuelve null.
- * @see https://lenguajejs.com/javascript/dom/localizacion-elementos-dom/
- */
-function initNavToggle() {
-  var toggle  = document.querySelector(".nav-toggle");
-  var navList = document.querySelector(".nav-list");
-
-  /* Si no existe el botón (versión escritorio), salgo sin hacer nada */
-  if (!toggle || !navList) { return; }
-
-  toggle.addEventListener("click", function () {
-    /* toggle() añade la clase si no está, la quita si está — perfecto para on/off */
-    navList.classList.toggle("nav-list--open");
-  });
-
-  /* Escucho clicks en cualquier parte de la página para cerrar el menú */
-  document.addEventListener("click", function (event) {
-    var isInsideNav = event.target.closest(".main-nav");
-    if (!isInsideNav && navList.classList.contains("nav-list--open")) {
-      navList.classList.remove("nav-list--open");
-    }
-  });
-}
 
 /**
  * @description Marca como activo el enlace del nav que corresponde a la página actual.
@@ -242,20 +211,12 @@ function detectCurrentPage() {
   return "";
 }
 
-/* =============================================
-   FETCH CENTRALIZADO
-   En lugar de repetir el mismo fetch en cada función, lo centralizo aquí.
-   lenguajejs.com → Async → Fetch → then / catch
-   ============================================= */
-
 /**
  * @description Wrapper de fetch reutilizable para todas las llamadas a la API.
- *              Recibe la URL y dos callbacks: uno para el éxito y otro para el error.
- *
- * IMPORTANTE: el proyecto no permite async/await, así que uso .then() encadenado.
+ *              Recibe la URL y dos callbacks: uno que devuelve correctamente y otro para el error.
  *
  * response.ok es true si el código HTTP está entre 200-299.
- * Si no, lanzo un Error manualmente con throw para que lo pille el .catch().
+ * Si no, lanzo un Error manualmente con throw para que lo agarre el .catch().
  * @see https://lenguajejs.com/javascript/peticiones-http/fetch/
  * @see https://lenguajejs.com/javascript/excepciones/throw/
  *
@@ -266,7 +227,6 @@ function detectCurrentPage() {
 function fetchAPI(url, onSuccess, onError) {
   fetch(url)
     .then(function (response) {
-      /* Si la respuesta no es 2xx, lanzo el error manualmente */
       if (!response.ok) {
         throw new Error("La API respondió con error: " + response.status);
       }
@@ -277,20 +237,12 @@ function fetchAPI(url, onSuccess, onError) {
       onSuccess(data);
     })
     .catch(function (error) {
-      /* Aquí llegan tanto los errores de red como el throw de arriba */
       onError(error.message);
     });
 }
 
-/* =============================================
-   UTILIDADES DOM
-   Funciones pequeñas de ayuda que uso muchísimo en todo el proyecto.
-   lenguajejs.com → DOM → Manipulación
-   ============================================= */
-
 /**
  * @description Quita la clase "hidden" de un elemento por su id.
- *              La clase "hidden" tiene display:none en el CSS.
  * @param {string} id - ID del elemento a mostrar
  */
 function showElement(id) {
@@ -332,7 +284,7 @@ function setHTML(id, html) {
 /**
  * @description Capitaliza la primera letra de un string.
  *              La API devuelve las casas en minúsculas ("gryffindor")
- *              y así las muestro bonitas ("Gryffindor").
+ *              y así las muestro con la primera letra en mayúscula ("Gryffindor").
  *
  * charAt(0) me da el primer carácter, toUpperCase() lo pone en mayúscula,
  * y slice(1) me da el resto del string desde el índice 1.
@@ -348,11 +300,10 @@ function getHouseName(house) {
 
 /**
  * @description Genera el HTML del badge de casa que aparece en el modal.
- *              Incluye el escudo de la casa como imagen (añadido manualmente
- *              porque la API no devuelve imágenes de escudos).
+ *              Incluye el escudo de la casa como imagen.
  *
- * Uso un objeto "escudos" como tabla de consulta (lookup table) en vez de
- * un switch o varios if — es más limpio y fácil de ampliar.
+ * Uso un objeto "escudos" como tabla de consulta en vez de
+ * un switch o varios if — es más limpio y fácil de cambiaar.
  *
  * @param   {string} house - Nombre de la casa en minúsculas
  * @returns {string} HTML del badge con escudo e imagen
@@ -361,7 +312,6 @@ function buildHouseBadgeHTML(house) {
   var cls  = house ? house.toLowerCase() : "no-house";
   var name = house ? getHouseName(house) : "Sin casa";
 
-  /* Rutas a los escudos que dibujé — una por casa */
   var escudos = {
     gryffindor: "../img/escudo_gryffindor.png",
     slytherin:  "../img/escudo_slytherin.png",
@@ -369,18 +319,12 @@ function buildHouseBadgeHTML(house) {
     hufflepuff: "../img/escudo_hufflepuf.png"
   };
 
-  /* Si la casa tiene escudo lo incluyo; si no (ej. "no-house"), dejo el string vacío */
   var imgHTML = escudos[cls]
     ? "<img src=\"" + escudos[cls] + "\" alt=\"\" class=\"modal-house-badge__escudo\" />"
     : "";
 
   return "<span class=\"modal-house-badge " + cls + "\">" + imgHTML + name + "</span>";
 }
-
-/* =============================================
-   LIBRO.HTML — ESTADO DE PAGINACIÓN
-   Variables propias de la página libro.html.
-   ============================================= */
 
 /** Personajes que pasan el filtro activo — los que realmente se muestran */
 let filteredCharacters = [];
@@ -391,7 +335,7 @@ let currentPage = 0;
 /** Hechizos que pasan el filtro de búsqueda del grimorio */
 let filteredSpells = [];
 
-/** Página actual del grimorio (0-based igual que currentPage) */
+/** Página actual del grimorio (0 igual que currentPage) */
 let currentSpellPage = 0;
 
 /** Cuántos personajes se muestran por página en el lector */
@@ -399,10 +343,6 @@ const PAGE_SIZE = 4;
 
 /** Cuántos hechizos se muestran por página en el grimorio */
 const SPELLS_PAGE_SIZE = 8;
-
-/* =============================================
-   LIBRO.HTML — INICIALIZACIÓN
-   ============================================= */
 
 /**
  * @description Arranca la página El Gran Libro.
@@ -414,14 +354,12 @@ function initLibro() {
   fetchAPI(
     ENDPOINTS.allCharacters,
     function (data) {
-      /* Guardo los datos en caché para no volver a pedirlos */
       allCharactersCache = data;
       hideElement("loading-state");
       updateChapterCounts(data);
       showElement("btn-open-book");
       initOpenBookButton();
       initModalClose();
-      /* Los hechizos se cargan ya aunque el usuario no haya abierto ese capítulo */
       loadSpells();
     },
     function (errorMsg) {
@@ -447,7 +385,6 @@ function updateChapterCounts(characters) {
   setText("count-all", characters.length + " entradas");
 
   houses.forEach(function (house) {
-    /* .length al final de filter() me da el número de coincidencias */
     var count = characters.filter(function (c) {
       return c.house && c.house.toLowerCase() === house;
     }).length;
@@ -489,13 +426,11 @@ function initChapterButtons() {
 
   buttons.forEach(function (btn) {
     btn.addEventListener("click", function () {
-      /* Quito "active" de todos y se lo añado solo al clickeado */
       buttons.forEach(function (b) { b.classList.remove("active"); });
       btn.classList.add("active");
 
       var chapter = btn.id.replace("btn-", "");
 
-      /* El capítulo de hechizos tiene su propia sección aparte */
       if (chapter === "spells") {
         hideElement("characters-section");
           showElement("spells-section");
@@ -505,11 +440,9 @@ function initChapterButtons() {
       showElement("characters-section");
       hideElement("spells-section");
 
-      /* Actualizo el estado global y reinicio la paginación a la página 1 */
       currentHouseFilter = chapter;
       currentPage = 0;
 
-      /* Tabla de nombres legibles para el título del capítulo */
       var chapterNames = {
         all:        "Todos los magos",
         gryffindor: "Gryffindor",
@@ -522,10 +455,6 @@ function initChapterButtons() {
     });
   });
 }
-
-/* =============================================
-   LIBRO.HTML — RENDER CON PAGINACIÓN
-   ============================================= */
 
 /**
  * @description Renderiza la página actual de personajes (PAGE_SIZE por página).
@@ -547,7 +476,6 @@ function renderCharacters(characters) {
   filteredCharacters = characters;
   var totalPages = Math.ceil(characters.length / PAGE_SIZE);
 
-  /* Si la página actual ya no existe (p.ej. al filtrar), vuelvo a la 1 */
   if (currentPage >= totalPages) { currentPage = 0; }
 
   var start          = currentPage * PAGE_SIZE;
@@ -604,8 +532,7 @@ function renderCharacters(characters) {
 
 /**
  * @description Activa/desactiva las flechas de paginación y registra sus clicks.
- *              Usa data-init como "bandera" para no añadir el mismo listener dos veces
- *              (esto pasaría porque la función se llama en cada renderizado).
+ *              Usa data-init como "bandera" para no añadir el mismo listener dos veces.
  *
  * getAttribute / setAttribute me permiten leer y escribir atributos HTML.
  * @see https://lenguajejs.com/javascript/dom/dataset/
@@ -624,7 +551,6 @@ function updatePageControls(page, totalPages) {
   btnPrev.disabled = (page === 0);
   btnNext.disabled = (page >= totalPages - 1);
 
-  /* Solo añado el listener la primera vez gracias a la bandera data-init */
   if (!btnPrev.getAttribute("data-init")) {
     btnPrev.setAttribute("data-init", "true");
     btnPrev.addEventListener("click", function () {
@@ -668,10 +594,6 @@ function initCharacterCardClicks() {
   });
 }
 
-/* =============================================
-   LIBRO.HTML — MODAL
-   ============================================= */
-
 /**
  * @description Abre el modal y carga la ficha detallada de un personaje por id.
  *              Bloquea el scroll del body mientras está abierto.
@@ -686,7 +608,6 @@ function openCharacterModal(id) {
   var overlay = document.getElementById("modal-overlay");
   if (!overlay) { return; }
 
-  /* Muestro un mensaje de carga mientras espero la respuesta */
   setHTML("modal-content", "<p class=\"loading-text\" style=\"text-align:center;padding:2rem 1rem;\">Cargando ficha...</p>");
   overlay.classList.remove("hidden");
   document.body.style.overflow = "hidden";
@@ -712,7 +633,7 @@ function openCharacterModal(id) {
  *              el operador && para comprobar que existen antes de acceder.
  *
  * Si intentase acceder directamente a character.wand.wood y wand fuese null,
- * el programa se rompería. El && hace un "short-circuit": si wand es falsy,
+ * el programa se rompería. El && hace un "short-circuit": si wand es falsi,
  * para y devuelve false sin intentar acceder a .wood.
  * @see https://lenguajejs.com/javascript/objetos/acceso-objetos/
  *
@@ -728,7 +649,6 @@ function renderModal(character) {
     ? "<img src=\"" + character.image + "\" alt=\"Foto de " + character.name + "\" class=\"modal-img\" />"
     : getPlaceholderHTML(character, "modal-no-img", "../img/");
 
-  /* Combino madera y núcleo de la varita en un string legible */
   var wand = (character.wand && character.wand.wood)
     ? character.wand.wood + ", " + character.wand.core
     : "Desconocida";
@@ -803,11 +723,6 @@ function closeModal() {
   document.body.style.overflow = "";
 }
 
-/* =============================================
-   LIBRO.HTML — BÚSQUEDA
-   ============================================= */
-
-
 /**
  * @description Combina el filtro de casa y la búsqueda por texto y renderiza el resultado.
  *              Encadeno dos filter() — primero filtra por casa, luego por texto.
@@ -818,10 +733,8 @@ function closeModal() {
  * @see https://lenguajejs.com/javascript/string/metodos-includes/
  */
 function applyFilters() {
-  /* Parto siempre del array completo en caché */
   var filtered = allCharactersCache;
 
-  /* Primer filtro: por casa (si no es "all") */
   if (currentHouseFilter !== "all") {
     filtered = filtered.filter(function (c) {
       return c.house && c.house.toLowerCase() === currentHouseFilter;
@@ -831,10 +744,6 @@ function applyFilters() {
 
   renderCharacters(filtered);
 }
-
-/* =============================================
-   LIBRO.HTML — GRIMORIO DE HECHIZOS
-   ============================================= */
 
 /**
  * @description Carga los hechizos desde la API en segundo plano.
@@ -891,7 +800,6 @@ function renderSpells(spells) {
 
   var html = "";
   pageSpells.forEach(function (spell, index) {
-    /* La incantación puede no existir (hechizos sin palabras), por eso el || "" */
     var incantation = spell.incantation || "";
 
     html += "<div class=\"spell-card\" style=\"animation-delay:" + (index * 0.02) + "s\">"
@@ -900,7 +808,6 @@ function renderSpells(spells) {
           + "</div>";
   });
 
-  /* Mismo truco de reflow que en renderCharacters para reiniciar la animación */
   var page = document.querySelector(".spells-book-page");
   if (page) {
     page.classList.remove("book-page--turning");
@@ -957,11 +864,6 @@ function initSpellPageControls() {
   updateSpellPageControls(currentSpellPage, Math.ceil(filteredSpells.length / SPELLS_PAGE_SIZE));
 }
 
-
-/* =============================================
-   SOMBRERO.HTML — QUIZ
-   ============================================= */
-
 /**
  * @description Arranca la página del Sombrero Seleccionador.
  *              Resetea el estado del quiz y muestra la primera pregunta.
@@ -972,7 +874,6 @@ function initSombrero() {
 
   renderQuestion(0);
 
-  /* El botón de "repetir" está en la sección de resultados, lo registro aquí */
   var retryBtn = document.getElementById("btn-retry");
   if (retryBtn) {
     retryBtn.addEventListener("click", function () { resetQuiz(); });
@@ -996,7 +897,6 @@ function renderQuestion(index) {
   var grid = document.getElementById("answers-grid");
   if (!grid) { return; }
 
-  /* Genero un botón por cada respuesta, con data-index para saber cuál se pulsó */
   var html = "";
   question.answers.forEach(function (answer, i) {
     html += "<button class=\"answer-btn\" data-index=\"" + i + "\">"
@@ -1034,7 +934,6 @@ function initAnswerButtons(question) {
 
       currentQuestion++;
 
-      /* Si quedan preguntas sigo; si no, muestro el resultado */
       if (currentQuestion < QUIZ_QUESTIONS.length) {
         renderQuestion(currentQuestion);
       } else {
@@ -1072,15 +971,12 @@ function updateProgressBar(index) {
  * También muestra el escudo de la casa ganadora — imagen que dibujé yo mismo.
  */
 function showQuizResult() {
-  /* Lleno la barra al 100% */
   updateProgressBar(QUIZ_QUESTIONS.length);
 
-  /* Mapa de letras a nombres de casa */
   var map       = { g: "gryffindor", s: "slytherin", r: "ravenclaw", h: "hufflepuff" };
   var winnerKey = "g";
   var maxScore  = -1;
 
-  /* Recorro las 4 claves y me quedo con la que tiene más puntos */
   Object.keys(quizScores).forEach(function (key) {
     if (quizScores[key] > maxScore) {
       maxScore  = quizScores[key];
@@ -1094,7 +990,6 @@ function showQuizResult() {
   hideElement("quiz-section");
   showElement("result-section");
 
-  /* Pongo el nombre de la casa y le añado su clase CSS para el color */
   var nameEl   = document.getElementById("result-house-name");
   var shieldEl = document.getElementById("result-house-shield");
 
@@ -1103,7 +998,6 @@ function showQuizResult() {
     nameEl.className   = "result-house-name " + winnerHouse;
   }
 
-  /* Muestro el escudo de la casa ganadora — cambio src e img dinámicamente */
   var escudos = {
     gryffindor: "../img/escudo_gryffindor.png",
     slytherin:  "../img/escudo_slytherin.png",
@@ -1186,10 +1080,6 @@ function resetQuiz() {
   showElement("quiz-section");
   renderQuestion(0);
 }
-
-/* =============================================
-   DUELO.HTML
-   ============================================= */
 
 /**
  * @description Arranca la página Duelo de Magos.
@@ -1311,18 +1201,15 @@ function loadDuelistCard(selectId, cardId) {
  */
 function renderDuelistCard(container, character) {
   var house      = character.house ? character.house.toLowerCase() : "";
-  /* Si la casa no existe en HOUSE_DATA uso el color morado del tema */
   var houseColor = (house && HOUSE_DATA[house]) ? HOUSE_DATA[house].color : "#7F77DD";
   var wand       = (character.wand && character.wand.wood)
     ? character.wand.wood + ", " + character.wand.core
     : "Varita desconocida";
 
-  /* Placeholder con género si no tiene foto */
   var imgHTML = character.image
     ? "<img src=\"" + character.image + "\" alt=\"Foto de " + character.name + "\" class=\"duelist-card__img\" />"
     : getPlaceholderHTML(character, "duelist-card__no-img", "../img/");
 
-  /* Estilos inline para el badge de color de casa — uso el color de HOUSE_DATA */
   var badgeStyle = "border:1px solid " + houseColor + ";"
                  + "color:" + houseColor + ";"
                  + "background:rgba(0,0,0,0.2);";
@@ -1355,7 +1242,6 @@ function initDuelButton() {
  *
  * Para la CPU uso filter() para excluir al mago del jugador del pool
  * y luego Math.floor(Math.random() * pool.length) para un índice aleatorio.
- * Es el mismo método que en un piedra-papel-tijera.
  * @see https://lenguajejs.com/javascript/matematicas/math-random/
  * @see https://lenguajejs.com/javascript/arrays/metodo-filter/
  */
@@ -1363,7 +1249,6 @@ function executeDuel() {
   var select1 = document.getElementById("select-1");
   if (!select1) { return; }
 
-  /* Valido que el jugador eligió mago — si no, muestro error y paro */
   try {
     if (!select1.value) {
       throw new Error("Debes elegir tu mago antes de iniciar el duelo.");
@@ -1374,7 +1259,6 @@ function executeDuel() {
     return;
   }
 
-  /* find() busca el primer elemento que cumpla la condición — como filter() pero devuelve uno solo */
   var char1 = allCharactersCache.find(function (c) { return c.id === select1.value; });
   if (!char1) { return; }
 
@@ -1383,7 +1267,6 @@ function executeDuel() {
   var index = Math.floor(Math.random() * pool.length);
   var char2 = pool[index];
 
-  /* Muestro la tarjeta de la CPU */
   hideElement("cpu-hint");
   var card2 = document.getElementById("card-2");
   if (card2) {
@@ -1397,11 +1280,11 @@ function executeDuel() {
   var resultText = "";
 
   if (score1 > score2) {
-    resultText = "⚡ ¡Victoria! " + char1.name + " vence a " + char2.name + " (" + score1 + " vs " + score2 + " puntos).";
+    resultText = "¡Victoria! " + char1.name + " vence a " + char2.name + " (" + score1 + " vs " + score2 + " puntos).";
   } else if (score2 > score1) {
-    resultText = "💀 La CPU gana. " + char2.name + " derrota a " + char1.name + " (" + score2 + " vs " + score1 + " puntos).";
+    resultText = "La CPU gana. " + char2.name + " derrota a " + char1.name + " (" + score2 + " vs " + score1 + " puntos).";
   } else {
-    resultText = "✨ ¡Empate! " + char1.name + " y " + char2.name + " están igualados con " + score1 + " puntos.";
+    resultText = "¡Empate! " + char1.name + " y " + char2.name + " están igualados con " + score1 + " puntos.";
   }
 
   showElement("duel-result");
@@ -1435,7 +1318,6 @@ function calculateDuelScore(character) {
   if (character.ancestry === "pure-blood")   { score += 2; } /* Sangre pura: +2 */
   if (character.ancestry === "half-blood")   { score += 1; } /* Mestizo: +1 */
 
-  /* Factor suerte: 0, 1 o 2 puntos aleatorios */
   score += Math.floor(Math.random() * 3);
 
   return score;

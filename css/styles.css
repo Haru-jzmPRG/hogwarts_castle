@@ -182,23 +182,6 @@ img {
   width: 100%;
 }
 
-/* Botón hamburguesa (oculto por defecto en desktop) */
-.nav-toggle {
-  display: none;
-  background: none;
-  border: 1px solid var(--color-border);
-  color: var(--color-text);
-  font-size: 1.2rem;
-  padding: 6px 10px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: border-color var(--transition);
-}
-
-.nav-toggle:hover {
-  border-color: var(--color-gold);
-  color: var(--color-gold);
-}
 
 /* =============================================
    MAIN
@@ -695,47 +678,7 @@ img {
 .portal-card:nth-child(2) { animation: fadeInUp 0.6s ease 0.3s both; }
 .portal-card:nth-child(3) { animation: fadeInUp 0.6s ease 0.5s both; }
 
-/* =============================================
-   RESPONSIVE
-   lenguajecss.com → CSS → Media Queries
-   ============================================= */
-@media (max-width: 768px) {
-  .nav-toggle {
-    display: block;
-  }
 
-  .nav-list {
-    display: none;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    right: 0;
-    background-color: var(--color-bg-deep);
-    border-bottom: 1px solid var(--color-border);
-    flex-direction: column;
-    gap: 0;
-    padding: 1rem 0;
-    z-index: 99;
-  }
-
-  .nav-list.nav-list--open {
-    display: flex;
-  }
-
-  .nav-link {
-    padding: 0.8rem 2rem;
-    width: 100%;
-    display: block;
-  }
-
-  .cards-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-title {
-    font-size: 2.5rem;
-  }
-}
 
 /* =============================================
    PAGE HERO (páginas internas)
@@ -1882,47 +1825,7 @@ img {
   font-size: 0.9rem;
 }
 
-/* =============================================
-   RESPONSIVE PÁGINAS INTERNAS
-   lenguajecss.com → CSS → Media Queries
-   ============================================= */
-@media (max-width: 768px) {
-  .page-hero {
-    padding: 3rem 1.5rem 2rem;
-  }
 
-  .filters-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.8rem;
-  }
-
-  .answers-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .duel-container {
-    grid-template-columns: 1fr;
-  }
-
-  .duel-vs {
-    flex-direction: row;
-    padding-top: 0;
-    justify-content: center;
-  }
-
-  .profile-container {
-    grid-template-columns: 1fr;
-  }
-
-  .characters-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  }
-
-  .modal-data {
-    grid-template-columns: 1fr;
-  }
-}
 
 /* =============================================
    LIBRO.HTML — PORTADA
@@ -2252,35 +2155,7 @@ img {
   animation: pageFlip 0.25s ease both;
 }
 
-/* =============================================
-   LIBRO.HTML — RESPONSIVE
-   lenguajecss.com → CSS → Media Queries
-   ============================================= */
-@media (max-width: 600px) {
-  .book-reader {
-    grid-template-columns: 36px 1fr 36px;
-    gap: 0.5rem;
-  }
 
-  .book-arrow {
-    width: 36px;
-    height: 60px;
-    font-size: 1.6rem;
-  }
-
-  .book-page .characters-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
-
-  .book-cover__inner {
-    padding: 2.5rem 1.5rem;
-  }
-
-  .book-index__chapters {
-    grid-template-columns: 1fr;
-  }
-}
 /* =============================================
    IMÁGENES PERSONALIZADAS
    ============================================= */
