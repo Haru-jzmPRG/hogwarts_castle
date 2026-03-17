@@ -1,10 +1,4 @@
-/* =============================================
-   HOGWARTS CASTLE — styles.css
-   Fuente de referencia: lenguajecss.com
-   ============================================= */
 
-/* --- VARIABLES CSS ---
-   lenguajecss.com → CSS → Custom Properties */
 :root {
   --color-bg:         #1A1226;
   --color-bg-card:    #2D1F4E;
@@ -15,67 +9,42 @@
   --color-text-muted: #C8B5E8;
   --color-border:     #3C2A6E;
 
-  --color-gryffindor: #740001;
-  --color-gryffindor-gold: #FFC500;
-  --color-slytherin:  #1A472A;
+  --color-gryffindor:       #740001;
+  --color-gryffindor-gold:  #FFC500;
+  --color-slytherin:        #1A472A;
   --color-slytherin-silver: #C0C0C0;
-  --color-ravenclaw:  #0E1A40;
+  --color-ravenclaw:        #0E1A40;
   --color-ravenclaw-bronze: #946B2D;
-  --color-hufflepuff: #ECB939;
+  --color-hufflepuff:       #ECB939;
   --color-hufflepuff-black: #2E2E2E;
 
-  --font-display:  'Cinzel Decorative', serif;
-  --font-heading:  'Cinzel', serif;
-  --font-body:     'IM Fell English', serif;
-  --font-elegant:  'Cormorant Garamond', serif;
+  --font-display: 'Cinzel Decorative', serif;
+  --font-heading: 'Cinzel', serif;
+  --font-body:    'IM Fell English', serif;
+  --font-elegant: 'Cormorant Garamond', serif;
 
-  --radius-sm:  6px;
-  --radius-md:  12px;
-  --radius-lg:  20px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
 
   --transition: 0.3s ease;
 }
 
-/* --- RESET BÁSICO ---
-   lenguajehtml.com → HTML → Estructura */
+/* Reset */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* --- SCROLLBAR PERSONALIZADA ---
-   NIVEL INTERMEDIO — Pseudoelementos ::-webkit-scrollbar para decorar
-   la barra de scroll en navegadores Chromium y Safari.
-   @see https://lenguajecss.com/css/otras-propiedades/scrollbar/ */
-::-webkit-scrollbar {
-  width: 8px;
-}
+/* Scrollbar personalizada */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background-color: var(--color-bg-deep); border-left: 1px solid var(--color-border); }
+::-webkit-scrollbar-thumb { background-color: var(--color-bg-card); border-radius: 10px; border: 2px solid var(--color-bg-deep); }
+::-webkit-scrollbar-thumb:hover { background-color: var(--color-accent); }
+::-webkit-scrollbar-corner { background-color: var(--color-bg-deep); }
 
-::-webkit-scrollbar-track {
-  background-color: var(--color-bg-deep);
-  border-left: 1px solid var(--color-border);
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--color-bg-card);
-  border-radius: 10px;
-  border: 2px solid var(--color-bg-deep);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: var(--color-accent);
-}
-
-::-webkit-scrollbar-corner {
-  background-color: var(--color-bg-deep);
-}
-
-/* --- BASE ---
-   lenguajecss.com → CSS → Selectores */
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   background-color: var(--color-bg);
@@ -88,24 +57,11 @@ body {
   flex-direction: column;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
 
-ul {
-  list-style: none;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-/* =============================================
-   HEADER
-   lenguajecss.com → CSS → Flexbox
-   ============================================= */
+/* HEADER */
 .site-header {
   position: sticky;
   top: 0;
@@ -124,17 +80,7 @@ img {
   justify-content: space-between;
 }
 
-/* Logo */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.logo-symbol {
-  font-size: 1.4rem;
-  color: var(--color-gold);
-}
+.logo { display: flex; align-items: center; gap: 10px; }
 
 .logo-text {
   font-family: var(--font-display);
@@ -143,12 +89,7 @@ img {
   letter-spacing: 0.05em;
 }
 
-/* Nav */
-.nav-list {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-}
+.nav-list { display: flex; gap: 2rem; align-items: center; }
 
 .nav-link {
   font-family: var(--font-heading);
@@ -160,7 +101,7 @@ img {
   position: relative;
 }
 
-/* lenguajecss.com → CSS → Pseudoelementos */
+/* Subrayado animado en hover/active */
 .nav-link::after {
   content: '';
   position: absolute;
@@ -173,28 +114,14 @@ img {
 }
 
 .nav-link:hover,
-.nav-link.active {
-  color: var(--color-gold);
-}
+.nav-link.active { color: var(--color-gold); }
 
 .nav-link:hover::after,
-.nav-link.active::after {
-  width: 100%;
-}
+.nav-link.active::after { width: 100%; }
 
+.site-main { flex: 1; }
 
-/* =============================================
-   MAIN
-   ============================================= */
-.site-main {
-  flex: 1;
-}
-
-/* =============================================
-   HERO
-   lenguajecss.com → CSS → Position
-   lenguajecss.com → CSS → Animations
-   ============================================= */
+/* HERO */
 .hero {
   position: relative;
   min-height: 92vh;
@@ -206,8 +133,6 @@ img {
   padding: 4rem 2rem;
 }
 
-/* Fondo estrellado animado
-   lenguajecss.com → CSS → Animations → @keyframes */
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -215,6 +140,7 @@ img {
   z-index: 0;
 }
 
+/* Fondo estrellado con múltiples capas de radial-gradient */
 .stars {
   position: absolute;
   inset: 0;
@@ -259,12 +185,7 @@ img {
   100% { opacity: 0.8; }
 }
 
-/* Contenido hero */
-.hero-content {
-  position: relative;
-  z-index: 1;
-  max-width: 700px;
-}
+.hero-content { position: relative; z-index: 1; max-width: 700px; }
 
 .hero-eyebrow {
   font-family: var(--font-heading);
@@ -283,10 +204,6 @@ img {
   line-height: 1.1;
   margin-bottom: 1.5rem;
   animation: fadeInDown 0.8s ease 0.2s both;
-}
-
-/* lenguajecss.com → CSS → Text → text-shadow */
-.hero-title {
   text-shadow: 0 0 40px rgba(127, 119, 221, 0.4);
 }
 
@@ -299,14 +216,7 @@ img {
   animation: fadeInDown 0.8s ease 0.4s both;
 }
 
-/* Runas decorativas
-   lenguajecss.com → CSS → Position → absolute */
-.hero-deco {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
+.hero-deco { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
 
 .deco-rune {
   position: absolute;
@@ -326,10 +236,7 @@ img {
   50%       { transform: translateY(-6px); }
 }
 
-/* =============================================
-   BOTONES
-   lenguajecss.com → CSS → Transitions
-   ============================================= */
+/* BOTONES */
 .btn {
   display: inline-block;
   font-family: var(--font-heading);
@@ -340,27 +247,19 @@ img {
   border-radius: var(--radius-sm);
   border: 1px solid currentColor;
   cursor: pointer;
-  transition: background-color var(--transition),
-              color var(--transition),
-              transform var(--transition),
-              box-shadow var(--transition);
+  transition: background-color var(--transition), color var(--transition),
+              transform var(--transition), box-shadow var(--transition);
   animation: fadeInDown 0.8s ease 0.6s both;
 }
 
-.btn:hover {
-  transform: translateY(-2px);
-}
-
-.btn:active {
-  transform: translateY(0) scale(0.98);
-}
+.btn:hover  { transform: translateY(-2px); }
+.btn:active { transform: translateY(0) scale(0.98); }
 
 .btn--primary {
   background-color: var(--color-gold);
   color: var(--color-bg-deep);
   border-color: var(--color-gold);
 }
-
 .btn--primary:hover {
   background-color: transparent;
   color: var(--color-gold);
@@ -375,47 +274,28 @@ img {
   text-align: center;
   margin-top: auto;
 }
-
 .btn--card:hover {
   border-color: var(--color-accent);
   color: var(--color-text);
   background-color: rgba(127, 119, 221, 0.1);
 }
 
-.btn--gold {
-  border-color: var(--color-gold);
-  color: var(--color-gold);
-}
-
+.btn--gold { border-color: var(--color-gold); color: var(--color-gold); }
 .btn--gold:hover {
   background-color: rgba(239, 159, 39, 0.15);
   box-shadow: 0 0 20px rgba(239, 159, 39, 0.2);
 }
 
-.btn--purple {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-}
-
+.btn--purple { border-color: var(--color-accent); color: var(--color-accent); }
 .btn--purple:hover {
   background-color: rgba(127, 119, 221, 0.15);
   box-shadow: 0 0 20px rgba(127, 119, 221, 0.2);
 }
 
-/* =============================================
-   SECCIÓN CARDS
-   lenguajecss.com → CSS → Grid
-   ============================================= */
-.sections {
-  padding: 6rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
+/* SECCIÓN CARDS (index) */
+.sections { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
 
-.section-header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
+.section-header { text-align: center; margin-bottom: 4rem; }
 
 .section-title {
   font-family: var(--font-heading);
@@ -438,11 +318,7 @@ img {
   gap: 2rem;
 }
 
-/* =============================================
-   PORTAL CARDS
-   lenguajecss.com → CSS → Flexbox
-   lenguajecss.com → CSS → Transitions
-   ============================================= */
+/* PORTAL CARDS */
 .portal-card {
   position: relative;
   background-color: var(--color-bg-card);
@@ -456,21 +332,11 @@ img {
   transition: transform var(--transition), border-color var(--transition);
 }
 
-.portal-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--color-accent);
-}
+.portal-card:hover { transform: translateY(-6px); border-color: var(--color-accent); }
+.portal-card--featured { border-color: var(--color-gold); }
+.portal-card--featured:hover { border-color: var(--color-gold); }
 
-.portal-card--featured {
-  border-color: var(--color-gold);
-}
-
-.portal-card--featured:hover {
-  border-color: var(--color-gold);
-}
-
-/* Glow de fondo
-   lenguajecss.com → CSS → Position */
+/* Glow decorativo en esquina superior derecha */
 .portal-card__glow {
   position: absolute;
   top: -40px;
@@ -483,18 +349,9 @@ img {
   transition: opacity var(--transition);
   pointer-events: none;
 }
-
-.portal-card:hover .portal-card__glow {
-  opacity: 0.14;
-}
-
-.portal-card__glow--gold     { background-color: var(--color-gold); }
-.portal-card__glow--purple   { background-color: var(--color-accent); }
-
-.portal-card__icon {
-  font-size: 2.5rem;
-  line-height: 1;
-}
+.portal-card:hover .portal-card__glow { opacity: 0.14; }
+.portal-card__glow--gold   { background-color: var(--color-gold); }
+.portal-card__glow--purple { background-color: var(--color-accent); }
 
 .portal-card__title {
   font-family: var(--font-heading);
@@ -523,19 +380,13 @@ img {
   border: 1px solid rgba(239, 159, 39, 0.3);
   width: fit-content;
 }
-
 .portal-card__badge--purple {
   background-color: rgba(127, 119, 221, 0.15);
   color: var(--color-accent);
   border-color: rgba(127, 119, 221, 0.3);
 }
 
-/* Tags de casas */
-.portal-card__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
+.portal-card__tags { display: flex; flex-wrap: wrap; gap: 6px; }
 
 .tag {
   font-family: var(--font-heading);
@@ -546,35 +397,12 @@ img {
   border-radius: 20px;
   border: 1px solid transparent;
 }
+.tag--gryffindor { background-color: rgba(116,0,1,0.3); color: var(--color-gryffindor-gold); border-color: rgba(116,0,1,0.5); }
+.tag--slytherin  { background-color: rgba(26,71,42,0.3); color: var(--color-slytherin-silver); border-color: rgba(26,71,42,0.5); }
+.tag--ravenclaw  { background-color: rgba(14,26,64,0.5); color: var(--color-ravenclaw-bronze); border-color: rgba(14,26,64,0.8); }
+.tag--hufflepuff { background-color: rgba(236,185,57,0.15); color: var(--color-hufflepuff); border-color: rgba(236,185,57,0.3); }
 
-.tag--gryffindor {
-  background-color: rgba(116, 0, 1, 0.3);
-  color: var(--color-gryffindor-gold);
-  border-color: rgba(116, 0, 1, 0.5);
-}
-
-.tag--slytherin {
-  background-color: rgba(26, 71, 42, 0.3);
-  color: var(--color-slytherin-silver);
-  border-color: rgba(26, 71, 42, 0.5);
-}
-
-.tag--ravenclaw {
-  background-color: rgba(14, 26, 64, 0.5);
-  color: var(--color-ravenclaw-bronze);
-  border-color: rgba(14, 26, 64, 0.8);
-}
-
-.tag--hufflepuff {
-  background-color: rgba(236, 185, 57, 0.15);
-  color: var(--color-hufflepuff);
-  border-color: rgba(236, 185, 57, 0.3);
-}
-
-/* =============================================
-   CITA MÁGICA
-   lenguajecss.com → CSS → Text
-   ============================================= */
+/* CITA */
 .quote-section {
   padding: 5rem 2rem;
   background-color: var(--color-bg-deep);
@@ -582,11 +410,7 @@ img {
   border-bottom: 1px solid var(--color-border);
 }
 
-.magic-quote {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
+.magic-quote { max-width: 800px; margin: 0 auto; text-align: center; }
 
 .magic-quote__text {
   font-family: var(--font-elegant);
@@ -603,13 +427,9 @@ img {
   letter-spacing: 0.15em;
   color: var(--color-gold);
   text-transform: uppercase;
-  font-style: normal;
 }
 
-/* =============================================
-   FOOTER
-   lenguajecss.com → CSS → Flexbox
-   ============================================= */
+/* FOOTER */
 .site-footer {
   background-color: var(--color-bg-deep);
   border-top: 1px solid var(--color-border);
@@ -625,75 +445,33 @@ img {
   gap: 0.5rem;
 }
 
-.footer-brand {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  color: var(--color-gold);
-}
+.footer-brand { font-family: var(--font-display); font-size: 1rem; color: var(--color-gold); }
+.footer-copy  { font-family: var(--font-heading); font-size: 0.75rem; letter-spacing: 0.08em; color: var(--color-text-muted); text-transform: uppercase; }
+.footer-disclaimer { font-family: var(--font-elegant); font-size: 0.85rem; font-style: italic; color: var(--color-border); }
 
-.footer-copy {
-  font-family: var(--font-heading);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-}
-
-.footer-disclaimer {
-  font-family: var(--font-elegant);
-  font-size: 0.85rem;
-  font-style: italic;
-  color: var(--color-border);
-}
-
-/* =============================================
-   ANIMACIONES DE ENTRADA
-   lenguajecss.com → CSS → Animations
-   ============================================= */
+/* ANIMACIONES */
 @keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Animación de entrada para las cards
-   lenguajecss.com → CSS → Animations → animation-delay */
 .portal-card:nth-child(1) { animation: fadeInUp 0.6s ease 0.1s both; }
 .portal-card:nth-child(2) { animation: fadeInUp 0.6s ease 0.3s both; }
 .portal-card:nth-child(3) { animation: fadeInUp 0.6s ease 0.5s both; }
 
-
-
-/* =============================================
-   PAGE HERO (páginas internas)
-   lenguajecss.com → CSS → Flexbox
-   ============================================= */
+/* PAGE HERO (páginas internas) */
 .page-hero {
   background-color: var(--color-bg-deep);
   border-bottom: 1px solid var(--color-border);
   padding: 4rem 2rem 3rem;
 }
 
-.page-hero__content {
-  max-width: 1200px;
-  margin: 0 auto;
-}
+.page-hero__content { max-width: 1200px; margin: 0 auto; }
 
 .page-hero__title {
   font-family: var(--font-display);
@@ -712,18 +490,10 @@ img {
   animation: fadeInDown 0.6s ease 0.2s both;
 }
 
-/* =============================================
-   ESTADOS COMPARTIDOS: carga, error, hidden
-   lenguajecss.com → CSS → Display
-   ============================================= */
-.hidden {
-  display: none !important;
-}
+/* ESTADOS: carga, error, hidden */
+.hidden { display: none !important; }
 
-.loading-state {
-  text-align: center;
-  padding: 4rem 2rem;
-}
+.loading-state { text-align: center; padding: 4rem 2rem; }
 
 .loading-text {
   font-family: var(--font-elegant);
@@ -738,10 +508,7 @@ img {
   50%       { opacity: 1; }
 }
 
-.error-state {
-  text-align: center;
-  padding: 3rem 2rem;
-}
+.error-state { text-align: center; padding: 3rem 2rem; }
 
 .error-text {
   font-family: var(--font-body);
@@ -754,160 +521,8 @@ img {
   display: inline-block;
 }
 
-/* =============================================
-   LIBRO.HTML — FILTROS
-   lenguajecss.com → CSS → Flexbox
-   ============================================= */
-.filters-section {
-  padding: 2rem 2rem 0;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.filters-inner {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  flex-wrap: wrap;
-}
-
-.filters-label {
-  font-family: var(--font-heading);
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  white-space: nowrap;
-}
-
-.filters-group {
-  display: flex;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-}
-
-/* Botones de filtro
-   lenguajecss.com → CSS → Transitions */
-.filter-btn {
-  font-family: var(--font-heading);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.5rem 1.2rem;
-  border-radius: 20px;
-  border: 1px solid var(--color-border);
-  background-color: transparent;
-  color: var(--color-text-muted);
-  cursor: pointer;
-  transition: all var(--transition);
-}
-
-.filter-btn:hover {
-  border-color: var(--color-accent);
-  color: var(--color-text);
-}
-
-.filter-btn.active {
-  color: var(--color-text);
-}
-
-.filter-btn--all.active {
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
-  color: #fff;
-}
-
-.filter-btn--gryffindor { border-color: rgba(116,0,1,0.5); color: var(--color-gryffindor-gold); }
-.filter-btn--gryffindor:hover,
-.filter-btn--gryffindor.active {
-  background-color: var(--color-gryffindor);
-  border-color: var(--color-gryffindor);
-  color: var(--color-gryffindor-gold);
-}
-
-.filter-btn--slytherin { border-color: rgba(26,71,42,0.5); color: var(--color-slytherin-silver); }
-.filter-btn--slytherin:hover,
-.filter-btn--slytherin.active {
-  background-color: var(--color-slytherin);
-  border-color: var(--color-slytherin);
-  color: var(--color-slytherin-silver);
-}
-
-.filter-btn--ravenclaw { border-color: rgba(14,26,64,0.8); color: var(--color-ravenclaw-bronze); }
-.filter-btn--ravenclaw:hover,
-.filter-btn--ravenclaw.active {
-  background-color: var(--color-ravenclaw);
-  border-color: var(--color-ravenclaw);
-  color: var(--color-ravenclaw-bronze);
-}
-
-.filter-btn--hufflepuff { border-color: rgba(236,185,57,0.3); color: var(--color-hufflepuff); }
-.filter-btn--hufflepuff:hover,
-.filter-btn--hufflepuff.active {
-  background-color: rgba(236,185,57,0.2);
-  border-color: var(--color-hufflepuff);
-  color: var(--color-hufflepuff);
-}
-
-/* =============================================
-   LIBRO.HTML — BUSCADOR
-   lenguajecss.com → CSS → Forms
-   ============================================= */
-.search-section {
-  padding: 1.5rem 2rem 0;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-}
-
-.search-inner {
-  max-width: 460px;
-  width: 100%;
-}
-
-.search-input {
-  width: 100%;
-  padding: 0.75rem 1.2rem;
-  background-color: var(--color-bg-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  color: var(--color-text);
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  transition: border-color var(--transition);
-  outline: none;
-}
-
-.search-input::placeholder {
-  color: var(--color-text-muted);
-  opacity: 0.6;
-}
-
-.search-input:focus {
-  border-color: var(--color-accent);
-}
-
-.results-count {
-  max-width: 1200px;
-  margin: 1rem auto 0;
-  padding: 0 2rem;
-  font-family: var(--font-heading);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-
-/* =============================================
-   LIBRO.HTML — GRID DE PERSONAJES
-   lenguajecss.com → CSS → Grid
-   ============================================= */
-.characters-section {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
+/* LIBRO.HTML — GRID DE PERSONAJES */
+.characters-section { max-width: 1200px; margin: 0 auto; padding: 2rem; }
 
 .characters-grid {
   display: grid;
@@ -915,8 +530,6 @@ img {
   gap: 1.5rem;
 }
 
-/* Tarjeta de personaje
-   lenguajecss.com → CSS → Transitions */
 .character-card {
   background-color: var(--color-bg-card);
   border: 1px solid var(--color-border);
@@ -927,11 +540,9 @@ img {
   animation: fadeInUp 0.4s ease both;
 }
 
-.character-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--color-accent);
-}
+.character-card:hover { transform: translateY(-4px); border-color: var(--color-accent); }
 
+/* Borde de color por casa */
 .character-card.gryffindor { border-color: rgba(116,0,1,0.6); }
 .character-card.gryffindor:hover { border-color: var(--color-gryffindor-gold); }
 .character-card.slytherin  { border-color: rgba(26,71,42,0.6); }
@@ -941,22 +552,10 @@ img {
 .character-card.hufflepuff { border-color: rgba(236,185,57,0.3); }
 .character-card.hufflepuff:hover { border-color: var(--color-hufflepuff); }
 
-.character-card__img-wrapper {
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  background-color: var(--color-bg-deep);
-}
+.character-card__img-wrapper { aspect-ratio: 3 / 4; overflow: hidden; background-color: var(--color-bg-deep); }
 
-.character-card__img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.character-card:hover .character-card__img {
-  transform: scale(1.05);
-}
+.character-card__img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.character-card:hover .character-card__img { transform: scale(1.05); }
 
 .character-card__no-img {
   width: 100%;
@@ -964,13 +563,10 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
   color: var(--color-border);
 }
 
-.character-card__body {
-  padding: 1rem;
-}
+.character-card__body { padding: 1rem; }
 
 .character-card__name {
   font-family: var(--font-heading);
@@ -987,10 +583,7 @@ img {
   color: var(--color-text-muted);
 }
 
-/* =============================================
-   LIBRO.HTML — MODAL
-   lenguajecss.com → CSS → Position
-   ============================================= */
+/* LIBRO.HTML — MODAL */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -1038,15 +631,9 @@ img {
   transition: all var(--transition);
   z-index: 1;
 }
+.modal-close:hover { border-color: var(--color-gold); color: var(--color-gold); }
 
-.modal-close:hover {
-  border-color: var(--color-gold);
-  color: var(--color-gold);
-}
-
-.modal-content {
-  padding: 2rem;
-}
+.modal-content { padding: 2rem; }
 
 .modal-img-wrapper {
   width: 140px;
@@ -1058,11 +645,7 @@ img {
   border: 1px solid var(--color-border);
 }
 
-.modal-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+.modal-img { width: 100%; height: 100%; object-fit: cover; }
 
 .modal-no-img {
   width: 100%;
@@ -1070,7 +653,6 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 4rem;
 }
 
 .modal-name {
@@ -1081,8 +663,11 @@ img {
   margin-bottom: 0.5rem;
 }
 
+/* Badge de casa con escudo — display inline-flex para alinear imagen y texto */
 .modal-house-badge {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   width: fit-content;
   margin: 0 auto 1.5rem;
   font-family: var(--font-heading);
@@ -1093,38 +678,13 @@ img {
   border-radius: 20px;
 }
 
-.modal-house-badge.gryffindor {
-  background-color: rgba(116,0,1,0.3);
-  color: var(--color-gryffindor-gold);
-  border: 1px solid var(--color-gryffindor);
-}
-.modal-house-badge.slytherin {
-  background-color: rgba(26,71,42,0.3);
-  color: var(--color-slytherin-silver);
-  border: 1px solid var(--color-slytherin);
-}
-.modal-house-badge.ravenclaw {
-  background-color: rgba(14,26,64,0.4);
-  color: var(--color-ravenclaw-bronze);
-  border: 1px solid var(--color-ravenclaw);
-}
-.modal-house-badge.hufflepuff {
-  background-color: rgba(236,185,57,0.15);
-  color: var(--color-hufflepuff);
-  border: 1px solid rgba(236,185,57,0.4);
-}
-.modal-house-badge.no-house {
-  background-color: rgba(127,119,221,0.1);
-  color: var(--color-accent);
-  border: 1px solid var(--color-accent);
-}
+.modal-house-badge.gryffindor { background-color: rgba(116,0,1,0.3); color: var(--color-gryffindor-gold); border: 1px solid var(--color-gryffindor); }
+.modal-house-badge.slytherin  { background-color: rgba(26,71,42,0.3); color: var(--color-slytherin-silver); border: 1px solid var(--color-slytherin); }
+.modal-house-badge.ravenclaw  { background-color: rgba(14,26,64,0.4); color: var(--color-ravenclaw-bronze); border: 1px solid var(--color-ravenclaw); }
+.modal-house-badge.hufflepuff { background-color: rgba(236,185,57,0.15); color: var(--color-hufflepuff); border: 1px solid rgba(236,185,57,0.4); }
+.modal-house-badge.no-house   { background-color: rgba(127,119,221,0.1); color: var(--color-accent); border: 1px solid var(--color-accent); }
 
-.modal-data {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.8rem;
-  margin-top: 1rem;
-}
+.modal-data { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 1rem; }
 
 .modal-data-item {
   background-color: var(--color-bg-deep);
@@ -1143,39 +703,14 @@ img {
   margin-bottom: 0.3rem;
 }
 
-.modal-data-item__value {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: var(--color-text);
-}
+.modal-data-item__value { font-family: var(--font-body); font-size: 0.9rem; color: var(--color-text); }
 
-/* =============================================
-   SOMBRERO.HTML — QUIZ
-   lenguajecss.com → CSS → Flexbox
-   ============================================= */
-.quiz-section {
-  padding: 4rem 2rem;
-  max-width: 700px;
-  margin: 0 auto;
-}
+/* SOMBRERO.HTML — QUIZ */
+.quiz-section { padding: 4rem 2rem; max-width: 700px; margin: 0 auto; }
 
-.quiz-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  align-items: center;
-}
+.quiz-container { display: flex; flex-direction: column; gap: 2.5rem; align-items: center; }
 
-.hat-wrapper {
-  text-align: center;
-  position: relative;
-}
-
-.hat {
-  font-size: 5rem;
-  display: block;
-  animation: float 3s ease-in-out infinite;
-}
+.hat-wrapper { text-align: center; position: relative; }
 
 .hat-speech {
   background-color: var(--color-bg-card);
@@ -1216,14 +751,8 @@ img {
   margin-bottom: 1.8rem;
 }
 
-.answers-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.8rem;
-}
+.answers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
 
-/* Botón de respuesta
-   lenguajecss.com → CSS → Transitions */
 .answer-btn {
   background-color: var(--color-bg-deep);
   border: 1px solid var(--color-border);
@@ -1237,7 +766,6 @@ img {
   transition: all var(--transition);
   line-height: 1.4;
 }
-
 .answer-btn:hover {
   border-color: var(--color-gold);
   color: var(--color-text);
@@ -1245,46 +773,14 @@ img {
   transform: translateY(-1px);
 }
 
-/* Barra de progreso
-   lenguajecss.com → CSS → Transitions */
-.progress-bar-wrapper {
-  width: 100%;
-  height: 4px;
-  background-color: var(--color-bg-card);
-  border-radius: 2px;
-  overflow: hidden;
-}
+.progress-bar-wrapper { width: 100%; height: 4px; background-color: var(--color-bg-card); border-radius: 2px; overflow: hidden; }
 
-.progress-bar {
-  height: 100%;
-  background-color: var(--color-gold);
-  border-radius: 2px;
-  transition: width 0.4s ease;
-  width: 0%;
-}
+.progress-bar { height: 100%; background-color: var(--color-gold); border-radius: 2px; transition: width 0.4s ease; width: 0%; }
 
-/* =============================================
-   SOMBRERO.HTML — RESULTADO
-   lenguajecss.com → CSS → Flexbox
-   ============================================= */
-.result-section {
-  padding: 4rem 2rem;
-  max-width: 900px;
-  margin: 0 auto;
-}
+/* SOMBRERO.HTML — RESULTADO */
+.result-section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
 
-.result-container {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.2rem;
-}
-
-.result-hat {
-  font-size: 4rem;
-  animation: float 3s ease-in-out infinite;
-}
+.result-container { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.2rem; }
 
 .result-eyebrow {
   font-family: var(--font-heading);
@@ -1314,10 +810,7 @@ img {
   line-height: 1.7;
 }
 
-.result-members {
-  width: 100%;
-  margin-top: 1rem;
-}
+.result-members { width: 100%; margin-top: 1rem; }
 
 .result-members__title {
   font-family: var(--font-heading);
@@ -1335,7 +828,6 @@ img {
   margin-bottom: 2rem;
 }
 
-/* Mini tarjeta de compañero de casa */
 .member-card {
   background-color: var(--color-bg-card);
   border: 1px solid var(--color-border);
@@ -1354,20 +846,9 @@ img {
   margin: 0 auto 0.6rem;
 }
 
-.member-card__img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+.member-card__img { width: 100%; height: 100%; object-fit: cover; }
 
-.member-card__no-img {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-}
+.member-card__no-img { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
 
 .member-card__name {
   font-family: var(--font-heading);
@@ -1377,22 +858,11 @@ img {
   line-height: 1.3;
 }
 
-/* =============================================
-   DUELO.HTML — SECCIÓN DUELO
-   lenguajecss.com → CSS → Grid
-   ============================================= */
-.duel-section {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 3rem 2rem;
-}
+/* DUELO */
+.duel-section { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; }
 
-.duel-container {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 2rem;
-  align-items: start;
-}
+/* Grid de 3 columnas: jugador | VS | CPU */
+.duel-container { display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; align-items: start; }
 
 .duelist-panel__title {
   font-family: var(--font-heading);
@@ -1403,8 +873,6 @@ img {
   margin-bottom: 1rem;
 }
 
-/* Select de magos
-   lenguajecss.com → CSS → Forms */
 .duelist-select {
   width: 100%;
   padding: 0.75rem 1rem;
@@ -1423,12 +891,8 @@ img {
   background-position: right 1rem center;
   padding-right: 2.5rem;
 }
+.duelist-select:focus { border-color: var(--color-accent); }
 
-.duelist-select:focus {
-  border-color: var(--color-accent);
-}
-
-/* Tarjeta del duelista */
 .duelist-card {
   background-color: var(--color-bg-card);
   border: 1px solid var(--color-border);
@@ -1438,58 +902,14 @@ img {
   animation: fadeInUp 0.3s ease both;
 }
 
-.duelist-card__img-wrapper {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  background-color: var(--color-bg-deep);
-  margin-bottom: 1rem;
-}
+.duelist-card__img-wrapper { width: 100%; aspect-ratio: 3 / 4; border-radius: var(--radius-sm); overflow: hidden; background-color: var(--color-bg-deep); margin-bottom: 1rem; }
+.duelist-card__img { width: 100%; height: 100%; object-fit: cover; }
+.duelist-card__no-img { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
 
-.duelist-card__img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+.duelist-card__name { font-family: var(--font-heading); font-size: 1rem; letter-spacing: 0.05em; color: var(--color-text); margin-bottom: 0.4rem; }
+.duelist-card__info { font-family: var(--font-body); font-size: 0.85rem; font-style: italic; color: var(--color-text-muted); margin-bottom: 0.3rem; }
+.duelist-card__house-badge { display: inline-block; font-family: var(--font-heading); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-top: 0.4rem; }
 
-.duelist-card__no-img {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 4rem;
-}
-
-.duelist-card__name {
-  font-family: var(--font-heading);
-  font-size: 1rem;
-  letter-spacing: 0.05em;
-  color: var(--color-text);
-  margin-bottom: 0.4rem;
-}
-
-.duelist-card__info {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-style: italic;
-  color: var(--color-text-muted);
-  margin-bottom: 0.3rem;
-}
-
-.duelist-card__house-badge {
-  display: inline-block;
-  font-family: var(--font-heading);
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 3px 10px;
-  border-radius: 20px;
-  margin-top: 0.4rem;
-}
-
-/* Mensaje de espera de la CPU */
 .cpu-hint {
   font-family: var(--font-elegant);
   font-size: 0.95rem;
@@ -1502,30 +922,10 @@ img {
   margin-top: 1rem;
 }
 
-/* VS central */
-.duel-vs {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 1.5rem;
-  padding-top: 2.5rem;
-}
+.duel-vs { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 1.5rem; padding-top: 2.5rem; }
+.duel-vs__text { font-family: var(--font-display); font-size: 2rem; color: var(--color-gold); letter-spacing: 0.1em; }
+.duel-btn { white-space: nowrap; animation: none; }
 
-.duel-vs__text {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  color: var(--color-gold);
-  letter-spacing: 0.1em;
-}
-
-.duel-btn {
-  white-space: nowrap;
-  animation: none;
-}
-
-/* Resultado del duelo
-   lenguajecss.com → CSS → Animations */
 .duel-result {
   text-align: center;
   margin-top: 2rem;
@@ -1535,51 +935,17 @@ img {
   border-radius: var(--radius-md);
   animation: fadeInUp 0.4s ease both;
 }
+.duel-result__text { font-family: var(--font-elegant); font-size: 1.2rem; font-style: italic; color: var(--color-gold); }
 
-.duel-result__text {
-  font-family: var(--font-elegant);
-  font-size: 1.2rem;
-  font-style: italic;
-  color: var(--color-gold);
-}
-
-/* =============================================
-   DUELO.HTML — GRIMORIO DE HECHIZOS
-   lenguajecss.com → CSS → Grid
-   ============================================= */
+/* LIBRO — GRIMORIO DE HECHIZOS*/
 .spells-section {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 2rem 4rem;
+  padding: 3rem 2rem 4rem;
   border-top: 1px solid var(--color-border);
-  padding-top: 3rem;
 }
 
-.spells-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.spells-search-wrapper {
-  max-width: 460px;
-  margin: 0 auto 1rem;
-}
-
-.spells-count {
-  text-align: center;
-  font-family: var(--font-heading);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin-bottom: 2rem;
-}
-
-.spells-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-}
+.spells-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
 
 .spell-card {
   background-color: var(--color-bg-card);
@@ -1589,46 +955,16 @@ img {
   transition: transform var(--transition), border-color var(--transition);
   animation: fadeInUp 0.4s ease both;
 }
+.spell-card:hover { transform: translateY(-2px); border-color: var(--color-accent); }
 
-.spell-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--color-accent);
-}
+.spell-card__incantation { font-family: var(--font-display); font-size: 1rem; color: var(--color-gold); margin-bottom: 0.4rem; letter-spacing: 0.04em; }
+.spell-card__name { font-family: var(--font-heading); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-muted); }
 
-.spell-card__incantation {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  color: var(--color-gold);
-  margin-bottom: 0.4rem;
-  letter-spacing: 0.04em;
-}
+/* SOBRE MI — PERFIL */
+.profile-section { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
 
-.spell-card__name {
-  font-family: var(--font-heading);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
+.profile-container { display: grid; grid-template-columns: 1fr 1.6fr; gap: 2.5rem; align-items: start; }
 
-/* =============================================
-   SOBRE-MI.HTML — PERFIL
-   lenguajecss.com → CSS → Grid
-   ============================================= */
-.profile-section {
-  padding: 4rem 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.profile-container {
-  display: grid;
-  grid-template-columns: 1fr 1.6fr;
-  gap: 2.5rem;
-  align-items: start;
-}
-
-/* Ficha de alumno */
 .profile-card {
   background-color: var(--color-bg-card);
   border: 1px solid var(--color-gold);
@@ -1637,75 +973,19 @@ img {
   animation: fadeInUp 0.5s ease both;
 }
 
-.profile-card__header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
+.profile-card__header { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1rem; margin-bottom: 1.5rem; }
 
-.profile-card__seal {
-  animation: float 4s ease-in-out infinite;
-}
+.profile-card__eyebrow { font-family: var(--font-heading); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-gold); }
+.profile-card__name    { font-family: var(--font-display); font-size: 1.5rem; color: var(--color-text); }
 
-.profile-card__eyebrow {
-  font-family: var(--font-heading);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-gold);
-}
+.profile-card__divider { height: 1px; background-color: var(--color-border); margin-bottom: 1.5rem; }
 
-.profile-card__name {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  color: var(--color-text);
-}
+.profile-card__data { display: flex; flex-direction: column; gap: 0.8rem; }
 
-.profile-card__role {
-  font-family: var(--font-elegant);
-  font-size: 0.9rem;
-  font-style: italic;
-  color: var(--color-text-muted);
-}
+.profile-data-row { display: flex; flex-direction: column; gap: 0.2rem; }
+.profile-data-row__label { font-family: var(--font-heading); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-muted); }
+.profile-data-row__value { font-family: var(--font-body); font-size: 0.95rem; color: var(--color-text); }
 
-.profile-card__divider {
-  height: 1px;
-  background-color: var(--color-border);
-  margin-bottom: 1.5rem;
-}
-
-/* Data list: dl / dt / dd
-   lenguajehtml.com → HTML → Listas → dl */
-.profile-card__data {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-}
-
-.profile-data-row {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.profile-data-row__label {
-  font-family: var(--font-heading);
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-
-.profile-data-row__value {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  color: var(--color-text);
-}
-
-/* Badge de casa en sobre-mi */
 .house-badge {
   display: inline-block;
   font-family: var(--font-heading);
@@ -1715,29 +995,8 @@ img {
   padding: 4px 14px;
   border-radius: 20px;
 }
+.house-badge--gryffindor { background-color: rgba(116,0,1,0.3); color: var(--color-gryffindor-gold); border: 1px solid var(--color-gryffindor); }
 
-.house-badge--gryffindor {
-  background-color: rgba(116,0,1,0.3);
-  color: var(--color-gryffindor-gold);
-  border: 1px solid var(--color-gryffindor);
-}
-.house-badge--slytherin {
-  background-color: rgba(26,71,42,0.3);
-  color: var(--color-slytherin-silver);
-  border: 1px solid var(--color-slytherin);
-}
-.house-badge--ravenclaw {
-  background-color: rgba(14,26,64,0.4);
-  color: var(--color-ravenclaw-bronze);
-  border: 1px solid var(--color-ravenclaw);
-}
-.house-badge--hufflepuff {
-  background-color: rgba(236,185,57,0.15);
-  color: var(--color-hufflepuff);
-  border: 1px solid rgba(236,185,57,0.4);
-}
-
-/* Tarjeta del proyecto */
 .project-card {
   background-color: var(--color-bg-card);
   border: 1px solid var(--color-border);
@@ -1749,88 +1008,17 @@ img {
   animation: fadeInUp 0.5s ease 0.1s both;
 }
 
-.project-card__title {
-  font-family: var(--font-heading);
-  font-size: 0.85rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-gold);
-  margin-bottom: 0.2rem;
-}
+.project-card__title { font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-gold); margin-bottom: 0.2rem; }
+.project-card__text  { font-family: var(--font-body); font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.7; }
 
-.project-card__text {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  color: var(--color-text-muted);
-  line-height: 1.7;
-}
+.project-link { color: var(--color-accent); text-decoration: underline; text-decoration-color: transparent; transition: text-decoration-color var(--transition); }
+.project-link:hover { text-decoration-color: var(--color-accent); }
 
-.project-link {
-  color: var(--color-accent);
-  text-decoration: underline;
-  text-decoration-color: transparent;
-  transition: text-decoration-color var(--transition);
-}
+.references__title { font-family: var(--font-heading); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 0.6rem; }
+.references__list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+.references__list li { font-family: var(--font-body); font-size: 0.9rem; }
 
-.project-link:hover {
-  text-decoration-color: var(--color-accent);
-}
-
-/* Tecnologías */
-.tech-list__title,
-.references__title {
-  font-family: var(--font-heading);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin-bottom: 0.6rem;
-}
-
-.tech-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  list-style: none;
-}
-
-.tech-tag {
-  font-family: var(--font-heading);
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 4px 12px;
-  border-radius: 20px;
-  border: 1px solid var(--color-border);
-  color: var(--color-accent);
-  background-color: rgba(127, 119, 221, 0.08);
-  transition: all var(--transition);
-}
-
-.tech-tag:hover {
-  border-color: var(--color-accent);
-  background-color: rgba(127, 119, 221, 0.15);
-}
-
-/* Referencias */
-.references__list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.references__list li {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-}
-
-
-
-/* =============================================
-   LIBRO.HTML — PORTADA
-   lenguajecss.com → CSS → Flexbox
-   ============================================= */
+/* LIBRO — PORTADA */
 .book-cover {
   min-height: 92vh;
   display: flex;
@@ -1850,26 +1038,11 @@ img {
   padding: 3.5rem 3rem;
   background-color: var(--color-bg-card);
   animation: fadeInDown 0.8s ease both;
-  /* Sombra interior simulando profundidad de libro */
   box-shadow: inset 0 0 60px rgba(239,159,39,0.04);
 }
 
-.book-cover__ornament {
-  font-family: var(--font-heading);
-  font-size: 0.9rem;
-  letter-spacing: 0.3em;
-  color: var(--color-gold);
-  margin-bottom: 1.2rem;
-}
-
-.book-cover__subtitle {
-  font-family: var(--font-heading);
-  font-size: 0.72rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin-bottom: 1rem;
-}
+.book-cover__ornament { font-family: var(--font-heading); font-size: 0.9rem; letter-spacing: 0.3em; color: var(--color-gold); margin-bottom: 1.2rem; }
+.book-cover__subtitle { font-family: var(--font-heading); font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 1rem; }
 
 .book-cover__title {
   font-family: var(--font-display);
@@ -1877,60 +1050,20 @@ img {
   color: var(--color-gold);
   line-height: 1.1;
   margin-bottom: 0.6rem;
-  /* lenguajecss.com → CSS → Text → text-shadow */
   text-shadow: 0 0 30px rgba(239,159,39,0.25);
 }
 
-.book-cover__edition {
-  font-family: var(--font-elegant);
-  font-size: 0.9rem;
-  font-style: italic;
-  color: var(--color-text-muted);
-  margin-bottom: 1.5rem;
-}
+.book-cover__edition { font-family: var(--font-elegant); font-size: 0.9rem; font-style: italic; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+.book-cover__divider { width: 60px; height: 1px; background-color: var(--color-gold); margin: 0 auto 1.5rem; opacity: 0.5; }
+.book-cover__desc    { font-family: var(--font-elegant); font-size: 1rem; font-style: italic; color: var(--color-text-muted); line-height: 1.7; margin-bottom: 2rem; }
+.book-cover__btn     { animation: none; }
 
-.book-cover__divider {
-  width: 60px;
-  height: 1px;
-  background-color: var(--color-gold);
-  margin: 0 auto 1.5rem;
-  opacity: 0.5;
-}
+.book-content { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem 4rem; }
 
-.book-cover__desc {
-  font-family: var(--font-elegant);
-  font-size: 1rem;
-  font-style: italic;
-  color: var(--color-text-muted);
-  line-height: 1.7;
-  margin-bottom: 2rem;
-}
+/* LIBRO — ÍNDICE DE CAPÍTULOS */
+.book-index { margin-bottom: 1.5rem; }
 
-.book-cover__btn {
-  animation: none;
-}
-
-/* =============================================
-   LIBRO.HTML — CONTENIDO DEL LIBRO
-   ============================================= */
-.book-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 3rem 2rem 4rem;
-}
-
-/* =============================================
-   LIBRO.HTML — ÍNDICE
-   lenguajecss.com → CSS → Grid
-   ============================================= */
-.book-index {
-  margin-bottom: 1.5rem;
-}
-
-.book-index__header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
+.book-index__header { text-align: center; margin-bottom: 2rem; }
 
 .book-index__label {
   font-family: var(--font-heading);
@@ -1941,21 +1074,10 @@ img {
   margin-bottom: 0.5rem;
 }
 
-.book-index__title {
-  font-family: var(--font-display);
-  font-size: clamp(1.4rem, 3vw, 2rem);
-  color: var(--color-text);
-}
+.book-index__title { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2rem); color: var(--color-text); }
 
-.book-index__chapters {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 340px));
-  gap: 1rem;
-  justify-content: center;
-}
+.book-index__chapters { display: grid; grid-template-columns: repeat(3, minmax(0, 340px)); gap: 1rem; justify-content: center; }
 
-/* Botón de capítulo
-   lenguajecss.com → CSS → Transitions */
 .chapter-btn {
   background-color: var(--color-bg-card);
   border: 1px solid var(--color-border);
@@ -1970,125 +1092,44 @@ img {
   position: relative;
   overflow: hidden;
 }
+.chapter-btn:hover { transform: translateY(-3px); }
+.chapter-btn.active { border-width: 2px; }
 
-.chapter-btn:hover {
-  transform: translateY(-3px);
-}
+.chapter-btn__num  { font-family: var(--font-display); font-size: 1.3rem; color: var(--color-text-muted); min-width: 28px; transition: color var(--transition); }
+.chapter-btn__name { font-family: var(--font-heading); font-size: 0.8rem; letter-spacing: 0.06em; color: var(--color-text); flex: 1; }
+.chapter-btn__count { font-family: var(--font-elegant); font-size: 0.8rem; font-style: italic; color: var(--color-text-muted); white-space: nowrap; }
 
-.chapter-btn.active {
-  border-width: 2px;
-}
-
-/* Número de capítulo romano */
-.chapter-btn__num {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  color: var(--color-text-muted);
-  min-width: 28px;
-  transition: color var(--transition);
-}
-
-.chapter-btn__name {
-  font-family: var(--font-heading);
-  font-size: 0.8rem;
-  letter-spacing: 0.06em;
-  color: var(--color-text);
-  flex: 1;
-}
-
-.chapter-btn__count {
-  font-family: var(--font-elegant);
-  font-size: 0.8rem;
-  font-style: italic;
-  color: var(--color-text-muted);
-  white-space: nowrap;
-}
-
-/* Colores por capítulo */
 .chapter-btn--all:hover,
-.chapter-btn--all.active {
-  border-color: var(--color-accent);
-  background-color: rgba(127,119,221,0.08);
-}
+.chapter-btn--all.active { border-color: var(--color-accent); background-color: rgba(127,119,221,0.08); }
 .chapter-btn--all.active .chapter-btn__num { color: var(--color-accent); }
 
 .chapter-btn--gryffindor:hover,
-.chapter-btn--gryffindor.active {
-  border-color: var(--color-gryffindor);
-  background-color: rgba(116,0,1,0.12);
-}
+.chapter-btn--gryffindor.active { border-color: var(--color-gryffindor); background-color: rgba(116,0,1,0.12); }
 .chapter-btn--gryffindor.active .chapter-btn__num { color: var(--color-gryffindor-gold); }
 
 .chapter-btn--slytherin:hover,
-.chapter-btn--slytherin.active {
-  border-color: var(--color-slytherin);
-  background-color: rgba(26,71,42,0.12);
-}
+.chapter-btn--slytherin.active { border-color: var(--color-slytherin); background-color: rgba(26,71,42,0.12); }
 .chapter-btn--slytherin.active .chapter-btn__num { color: var(--color-slytherin-silver); }
 
 .chapter-btn--ravenclaw:hover,
-.chapter-btn--ravenclaw.active {
-  border-color: var(--color-ravenclaw);
-  background-color: rgba(49, 89, 223, 0.25);
-}
+.chapter-btn--ravenclaw.active { border-color: var(--color-ravenclaw); background-color: rgba(49,89,223,0.25); }
 .chapter-btn--ravenclaw.active .chapter-btn__num { color: var(--color-ravenclaw-bronze); }
 
 .chapter-btn--hufflepuff:hover,
-.chapter-btn--hufflepuff.active {
-  border-color: var(--color-hufflepuff);
-  background-color: rgba(236,185,57,0.1);
-}
+.chapter-btn--hufflepuff.active { border-color: var(--color-hufflepuff); background-color: rgba(236,185,57,0.1); }
 .chapter-btn--hufflepuff.active .chapter-btn__num { color: var(--color-hufflepuff); }
 
 .chapter-btn--spells:hover,
-.chapter-btn--spells.active {
-  border-color: var(--color-gold);
-  background-color: rgba(239,159,39,0.08);
-}
+.chapter-btn--spells.active { border-color: var(--color-gold); background-color: rgba(239,159,39,0.08); }
 .chapter-btn--spells.active .chapter-btn__num { color: var(--color-gold); }
 
-/* =============================================
-   LIBRO.HTML — CABECERA DE CAPÍTULO
-   ============================================= */
-.chapter-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--color-border);
-}
+.chapter-header { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--color-border); }
+.chapter-header__title { font-family: var(--font-heading); font-size: clamp(1.1rem, 2.5vw, 1.5rem); letter-spacing: 0.06em; color: var(--color-text); }
+.chapter-header__info  { font-family: var(--font-elegant); font-size: 0.9rem; font-style: italic; color: var(--color-text-muted); }
 
-.chapter-header__title {
-  font-family: var(--font-heading);
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  letter-spacing: 0.06em;
-  color: var(--color-text);
-}
+/* LIBRO — LECTOR CON FLECHAS */
+.book-reader { display: grid; grid-template-columns: 56px 1fr 56px; gap: 1rem; align-items: center; min-height: 500px; }
 
-.chapter-header__info {
-  font-family: var(--font-elegant);
-  font-size: 0.9rem;
-  font-style: italic;
-  color: var(--color-text-muted);
-}
-
-/* =============================================
-   LIBRO.HTML — LECTOR CON FLECHAS
-   lenguajecss.com → CSS → Grid
-   ============================================= */
-.book-reader {
-  display: grid;
-  grid-template-columns: 56px 1fr 56px;
-  gap: 1rem;
-  align-items: center;
-  min-height: 500px;
-}
-
-/* Flechas laterales
-   lenguajecss.com → CSS → Transitions */
 .book-arrow {
   background-color: var(--color-bg-card);
   border: 1px solid var(--color-border);
@@ -2105,104 +1146,37 @@ img {
   align-self: center;
   line-height: 1;
 }
+.book-arrow:hover:not(:disabled) { border-color: var(--color-gold); color: var(--color-gold); transform: scale(1.05); }
+.book-arrow:disabled { opacity: 0.2; cursor: not-allowed; }
 
-.book-arrow:hover:not(:disabled) {
-  border-color: var(--color-gold);
-  color: var(--color-gold);
-  transform: scale(1.05);
-}
+.book-page { display: flex; flex-direction: column; gap: 1.5rem; }
 
-.book-arrow:disabled {
-  opacity: 0.2;
-  cursor: not-allowed;
-}
+.book-page .characters-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 220px)); gap: 1.5rem; justify-content: center; }
 
-/* Página del libro */
-.book-page {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
+.book-page__num { font-family: var(--font-elegant); font-size: 0.85rem; font-style: italic; color: var(--color-text-muted); text-align: center; padding-top: 0.5rem; border-top: 1px solid var(--color-border); }
 
-/* Grid de 4 tarjetas por página en 2 columnas ajustadas
-   lenguajecss.com → CSS → Grid */
-.book-page .characters-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 220px));
-  gap: 1.5rem;
-  justify-content: center;
-}
-
-/* Número de página */
-.book-page__num {
-  font-family: var(--font-elegant);
-  font-size: 0.85rem;
-  font-style: italic;
-  color: var(--color-text-muted);
-  text-align: center;
-  padding-top: 0.5rem;
-  border-top: 1px solid var(--color-border);
-}
-
-/* Animación de cambio de página
-   lenguajecss.com → CSS → Animations */
 @keyframes pageFlip {
   0%   { opacity: 0; transform: translateX(16px); }
   100% { opacity: 1; transform: translateX(0); }
 }
 
-.book-page--turning {
-  animation: pageFlip 0.25s ease both;
-}
+.book-page--turning { animation: pageFlip 0.25s ease both; }
 
+/* IMÁGENES PERSONALIZADAS */
+.logo-symbol { width: 32px; height: 32px; object-fit: contain; }
 
-/* =============================================
-   IMÁGENES PERSONALIZADAS
-   ============================================= */
+.portal-card__icon { width: 80px; height: 80px; object-fit: contain; }
 
-/* Logo */
-.logo-symbol {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-}
+.hat { width: 160px; height: 160px; object-fit: contain; display: block; margin: 0 auto; animation: float 3s ease-in-out infinite; }
 
-/* Portal cards */
-.portal-card__icon {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-}
+.result-hat { width: 128px; height: 128px; object-fit: contain; display: block; margin: 0 auto; animation: float 3s ease-in-out infinite; }
 
-/* Sombrero */
-.hat {
-  width: 160px;
-  height: 160px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-}
-
-.result-hat {
-  width: 128px;
-  height: 128px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-}
-
-/* Placeholder bruja/hechicero — tarjeta personaje */
+/* Placeholders de bruja/hechicero generados por JS */
 .character-card__no-img img,
 .modal-no-img img,
 .member-card__no-img img,
-.duelist-card__no-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+.duelist-card__no-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-/* Sello sobre-mi */
 .profile-card__seal {
   width: 140px;
   height: 140px;
@@ -2211,34 +1185,15 @@ img {
   border-radius: 16px;
   border: 3px solid var(--color-gold);
   box-shadow: 0 0 18px rgba(239,159,39,0.35);
+  animation: float 4s ease-in-out infinite;
 }
 
-/* =============================================
-   ESCUDOS DE CASAS
-   ============================================= */
+/* ESCUDOS DE CASAS */
+.chapter-btn__escudo { width: 28px; height: 28px; object-fit: contain; flex-shrink: 0; }
 
-/* Índice del libro — escudo en botón de capítulo */
-.chapter-btn__escudo {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-  flex-shrink: 0;
-}
+.modal-house-badge__escudo { width: 18px; height: 18px; object-fit: contain; }
 
-/* Modal — escudo dentro del badge de casa */
-.modal-house-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.modal-house-badge__escudo {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-}
-
-/* Resultado sombrero — escudo grande de la casa ganadora */
+/* Escudo animado en pantalla de resultado del sombrero */
 .result-house-shield {
   width: 100px;
   height: 100px;
@@ -2248,28 +1203,9 @@ img {
   animation: fadeInDown 0.6s ease both, float 4s ease-in-out 0.6s infinite;
   filter: drop-shadow(0 0 12px rgba(239,159,39,0.3));
 }
+.result-house-shield.hidden { display: none; }
 
-.result-house-shield.hidden {
-  display: none;
-}
+.portal-card__shields { display: flex; gap: 8px; justify-content: center; align-items: center; margin-bottom: 0.2rem; }
 
-/* Portal cards — fila de 4 escudos pequeños decorativos */
-.portal-card__shields {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 0.2rem;
-}
-
-.portal-card__shields img {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
-}
-
-.portal-card:hover .portal-card__shields img {
-  opacity: 1;
-}
+.portal-card__shields img { width: 28px; height: 28px; object-fit: contain; opacity: 0.7; transition: opacity 0.3s ease; }
+.portal-card:hover .portal-card__shields img { opacity: 1; }
