@@ -17,7 +17,6 @@
   </head>
   <body>
 
-    <!-- HEADER -->
     <header class="site-header">
       <div class="header-inner">
         <div class="logo">
@@ -36,25 +35,21 @@
       </div>
     </header>
 
-    <!-- MAIN -->
     <main class="site-main">
 
-      <!-- PAGE HERO -->
       <section class="page-hero">
         <div class="page-hero__content">
           <p class="hero-eyebrow">Arena mágica</p>
           <h1 class="page-hero__title">Duelo de Magos</h1>
           <p class="page-hero__desc">
-            Selecciona dos personajes y enfréntalos en un duelo mágico.
+            Selecciona un personaje y enfréntalo en un duelo mágico contra la CPU.
           </p>
         </div>
       </section>
 
-      <!-- SELECCIÓN DE MAGOS -->
       <section class="duel-section">
         <div class="duel-container">
 
-          <!-- MAGO 1 — elegido por el jugador -->
           <div class="duelist-panel" id="panel-1">
             <h2 class="duelist-panel__title">Tu mago</h2>
             <select class="duelist-select" id="select-1" aria-label="Seleccionar tu mago">
@@ -63,7 +58,6 @@
             <div class="duelist-card hidden" id="card-1"></div>
           </div>
 
-          <!-- VS -->
           <div class="duel-vs" aria-hidden="true">
             <span class="duel-vs__text">VS</span>
             <button class="btn btn--primary duel-btn" id="btn-duel">
@@ -71,23 +65,20 @@
             </button>
           </div>
 
-          <!-- MAGO 2 — elegido por la CPU -->
           <div class="duelist-panel" id="panel-2">
             <h2 class="duelist-panel__title">Rival de la CPU</h2>
             <p class="cpu-hint" id="cpu-hint">
-              La CPU elegirá a su campeón cuando inicies el duelo.
+              La CPU elegirá a su bruja/hechicero cuando inicies el duelo.
             </p>
             <div class="duelist-card hidden" id="card-2"></div>
           </div>
 
         </div>
 
-        <!-- RESULTADO DEL DUELO -->
         <div class="duel-result hidden" id="duel-result">
           <p class="duel-result__text" id="duel-result-text"></p>
         </div>
 
-        <!-- ESTADOS -->
         <div class="loading-state hidden" id="duel-loading">
           <p class="loading-text">Cargando magos...</p>
         </div>
@@ -99,7 +90,6 @@
 
     </main>
 
-    <!-- FOOTER -->
     <footer class="site-footer">
       <div class="footer-inner">
         <p class="footer-brand">Hogwarts Castle</p>

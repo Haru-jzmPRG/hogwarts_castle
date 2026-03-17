@@ -17,7 +17,6 @@
   </head>
   <body>
 
-    <!-- HEADER -->
     <header class="site-header">
       <div class="header-inner">
         <div class="logo">
@@ -36,10 +35,8 @@
       </div>
     </header>
 
-    <!-- MAIN -->
     <main class="site-main">
 
-      <!-- PAGE HERO -->
       <section class="page-hero">
         <div class="page-hero__content">
           <p class="hero-eyebrow">Ceremonia de selección</p>
@@ -50,11 +47,9 @@
         </div>
       </section>
 
-      <!-- QUIZ -->
       <section class="quiz-section" id="quiz-section">
         <div class="quiz-container">
 
-          <!-- Sombrero animado -->
           <div class="hat-wrapper" aria-hidden="true">
             <img src="../img/sombrero160.png" alt="Sombrero Seleccionador" class="hat" id="hat-icon" />
             <div class="hat-speech hidden" id="hat-speech">
@@ -62,16 +57,13 @@
             </div>
           </div>
 
-          <!-- Pregunta actual -->
           <div class="question-card" id="question-card">
             <p class="question-number" id="question-number">Pregunta 1 de 5</p>
             <p class="question-text" id="question-text"></p>
             <div class="answers-grid" id="answers-grid">
-              <!-- Respuestas generadas por JS -->
             </div>
           </div>
 
-          <!-- Barra de progreso -->
           <div class="progress-bar-wrapper" aria-label="Progreso del test">
             <div class="progress-bar" id="progress-bar"></div>
           </div>
@@ -79,7 +71,6 @@
         </div>
       </section>
 
-      <!-- RESULTADO -->
       <section class="result-section hidden" id="result-section">
         <div class="result-container" id="result-container">
           <img src="../img/sombrero180.png" alt="" class="result-hat" aria-hidden="true" />
@@ -88,11 +79,9 @@
           <h2 class="result-house-name" id="result-house-name"></h2>
           <p class="result-house-desc" id="result-house-desc"></p>
 
-          <!-- Personajes famosos de la casa (desde API) -->
           <div class="result-members">
             <h3 class="result-members__title">Compañeros de casa ilustres</h3>
             <div class="result-members__grid" id="result-members-grid">
-              <!-- Generado dinámicamente -->
             </div>
             <div class="loading-state hidden" id="members-loading">
               <p class="loading-text">Consultando el registro mágico...</p>
@@ -108,7 +97,6 @@
 
     </main>
 
-    <!-- FOOTER -->
     <footer class="site-footer">
       <div class="footer-inner">
         <p class="footer-brand">Hogwarts Castle</p>

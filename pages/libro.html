@@ -17,7 +17,6 @@
   </head>
   <body>
 
-    <!-- HEADER -->
     <header class="site-header">
       <div class="header-inner">
         <div class="logo">
@@ -36,12 +35,8 @@
       </div>
     </header>
 
-    <!-- MAIN -->
     <main class="site-main">
-
-      <!-- ================================================
-           PORTADA DEL LIBRO (estado inicial)
-           ================================================ -->
+      //Portada del libro
       <section class="book-cover" id="book-cover">
         <div class="book-cover__inner">
           <div class="book-cover__ornament" aria-hidden="true">— ✦ —</div>
@@ -65,12 +60,8 @@
         </div>
       </section>
 
-      <!-- ================================================
-           CONTENIDO DEL LIBRO (oculto hasta abrir)
-           ================================================ -->
       <div class="book-content hidden" id="book-content">
-
-        <!-- ÍNDICE DE CAPÍTULOS -->
+        //Indice de capítulos
         <section class="book-index" id="book-index">
           <div class="book-index__header">
             <p class="book-index__label">Índice de capítulos</p>
@@ -126,19 +117,14 @@
 
           </div>
         </section>
-
-        <!-- ============================================
-             SECCIÓN DE PERSONAJES
-             ============================================ -->
+        //Personajes
         <section class="characters-section" id="characters-section">
 
-          <!-- Cabecera de capítulo -->
           <div class="chapter-header">
             <h2 class="chapter-header__title" id="chapter-title">Todos los magos</h2>
             <p class="chapter-header__info" id="results-count" aria-live="polite"></p>
           </div>
 
-          <!-- Flechas y grid estilo libro -->
           <div class="book-reader">
 
             <button class="book-arrow book-arrow--prev" id="btn-prev"
@@ -159,17 +145,13 @@
           </div>
 
         </section>
-
-        <!-- ============================================
-             SECCIÓN GRIMORIO (oculta por defecto)
-             ============================================ -->
+        //Hechizos
         <section class="spells-section hidden" id="spells-section">
           <div class="chapter-header">
             <h2 class="chapter-header__title">Grimorio de Hechizos</h2>
             <p class="chapter-header__info" id="spells-count" aria-live="polite"></p>
           </div>
 
-          <!-- Lector con flechas igual que personajes -->
           <div class="book-reader">
             <button class="book-arrow book-arrow--prev" id="btn-spell-prev"
                     aria-label="Página anterior de hechizos">
@@ -193,9 +175,8 @@
           </div>
         </section>
 
-      </div><!-- /book-content -->
+      </div>
 
-      <!-- MODAL DE PERSONAJE -->
       <div class="modal-overlay hidden" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-name">
         <div class="modal">
           <button class="modal-close" id="modal-close" aria-label="Cerrar ficha">&#10005;</button>
@@ -205,7 +186,6 @@
 
     </main>
 
-    <!-- FOOTER -->
     <footer class="site-footer">
       <div class="footer-inner">
         <p class="footer-brand">Hogwarts Castle</p>
