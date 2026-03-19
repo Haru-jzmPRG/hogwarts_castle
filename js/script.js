@@ -8,7 +8,7 @@
  * Aprendí a hacer peticiones HTTP con fetch aquí:
  * @see https://lenguajejs.com/javascript/peticiones-http/fetch/
  * Y los eventos del DOM aquí:
- * @see https://lenguajejs.com/javascript/dom/eventos-dom/
+ * @see https://www.luisllamas.es/javascript-eventos-en-el-dom/
  */
 
 /** La URL base de la API — la añado a una variable para no tener que colocar el enlace siempre*/
@@ -22,7 +22,7 @@ const API_BASE = "https://hp-api.onrender.com/api";
  * Algunos endpoints son strings directos y otros son funciones que
  * reciben un parámetro y construyen la URL dinámicamente.
  * Esto se llama objeto literal con métodos como propiedades:
- * @see https://lenguajejs.com/javascript/objetos/object-literal/
+ * @see https://dev.to/duxtech/es6-objetos-literales-en-javascript-58np
  */
 const ENDPOINTS = {
   allCharacters: API_BASE + "/characters",
@@ -76,7 +76,6 @@ const HOUSE_DATA = {
  *
  * Esto es un array de objetos con arrays de objetos dentro — bastante anidado,
  * pero muy útil para organizar datos estructurados como este:
- * @see https://lenguajejs.com/javascript/arrays/arrays-objetos/
  */
 const QUIZ_QUESTIONS = [
   {
@@ -183,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
  *
  * split("/").pop() parte el string por "/" y me queda solo el nombre del archivo.
  * Por ejemplo: "/pages/libro.html" → ["", "pages", "libro.html"] → "libro.html"
- * @see https://lenguajejs.com/javascript/string/metodos-split/
+ * @see https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String/split
  */
 function initNavActiveLink() {
   var links       = document.querySelectorAll(".nav-link");
@@ -217,8 +216,6 @@ function detectCurrentPage() {
  *
  * response.ok es true si el código HTTP está entre 200-299.
  * Si no, lanzo un Error manualmente con throw para que lo agarre el .catch().
- * @see https://lenguajejs.com/javascript/peticiones-http/fetch/
- * @see https://lenguajejs.com/javascript/excepciones/throw/
  *
  * @param {string}   url       - URL a consultar
  * @param {Function} onSuccess - Se llama con los datos JSON si todo va bien
@@ -288,7 +285,7 @@ function setHTML(id, html) {
  *
  * charAt(0) me da el primer carácter, toUpperCase() lo pone en mayúscula,
  * y slice(1) me da el resto del string desde el índice 1.
- * @see https://lenguajejs.com/javascript/string/metodos-slice/
+ * @see https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String/slice
  *
  * @param   {string} house - Nombre de la casa en minúsculas
  * @returns {string} Nombre con la primera letra en mayúscula
@@ -376,7 +373,7 @@ function initLibro() {
  *
  * filter() recorre el array y devuelve solo los elementos que cumplen
  * la condición — en este caso los de cada casa.
- * @see https://lenguajejs.com/javascript/arrays/metodo-filter/
+ * @see https://www.arsys.es/blog/filtrado-de-elementos-en-arrays-javascript-con-filter
  *
  * @param {Array} characters - Array completo de personajes de la API
  */
@@ -397,7 +394,7 @@ function updateChapterCounts(characters) {
  *              Al pulsarlo, oculta la portada y muestra el contenido con animación.
  *
  * classList.remove/add dispara las transiciones CSS automáticamente.
- * @see https://lenguajejs.com/javascript/dom/clases-css/
+ * @see https://platzi.com/tutoriales/2193-dom/9548-como-manipular-el-dom-con-javascript/
  */
 function initOpenBookButton() {
   var btn = document.getElementById("btn-open-book");
@@ -419,7 +416,7 @@ function initOpenBookButton() {
  *
  * btn.id.replace("btn-", "") me quita el prefijo "btn-" del id para
  * quedarme solo con el nombre del capítulo: "btn-gryffindor" → "gryffindor".
- * @see https://lenguajejs.com/javascript/string/metodos-replace/
+ * @see https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String/replace
  */
 function initChapterButtons() {
   var buttons = document.querySelectorAll(".chapter-btn");
@@ -461,11 +458,11 @@ function initChapterButtons() {
  *
  * slice(inicio, fin) corta el array para quedarse solo con los personajes
  * de la página actual. Por ejemplo, página 2 → slice(4, 8).
- * @see https://lenguajejs.com/javascript/arrays/metodo-slice/
+ * @see https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
  *
  * Math.ceil() redondea hacia arriba — si hay 5 personajes y PAGE_SIZE es 4,
  * necesito 2 páginas, no 1.25.
- * @see https://lenguajejs.com/javascript/matematicas/math-ceil/
+ * @see https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil
  *
  * @param {Array} characters - Array ya filtrado de personajes a paginar
  */
@@ -516,7 +513,7 @@ function renderCharacters(characters) {
      leyendo offsetWidth (el navegador recalcula el layout), y la vuelvo a añadir.
      Sin el void offsetWidth, el navegador omite la animación porque la clase
      nunca "desapareció" realmente.
-     @see https://lenguajejs.com/javascript/dom/cssom/ */
+     @see https://developer.mozilla.org/en-US/docs/Glossary/Reflow */
   var page = document.querySelector(".book-page");
   if (page) {
     page.classList.remove("book-page--turning");
@@ -535,9 +532,9 @@ function renderCharacters(characters) {
  *              Usa data-init como "bandera" para no añadir el mismo listener dos veces.
  *
  * getAttribute / setAttribute me permiten leer y escribir atributos HTML.
- * @see https://lenguajejs.com/javascript/dom/dataset/
+ * @see https://www.jscodez.com/dom/getattribute-setattribute-dataset
  * La propiedad disabled activa/desactiva un botón nativamente.
- * @see https://lenguajejs.com/javascript/dom/propiedades-atributos/
+ * @see https://developer.mozilla.org/es/docs/Web/API/Element
  *
  * @param {number} page       - Página actual (0-based)
  * @param {number} totalPages - Total de páginas calculado con Math.ceil
@@ -578,7 +575,7 @@ function updatePageControls(page, totalPages) {
  *              El teclado es para accesibilidad: permite abrir la ficha con Enter o Espacio.
  *
  * event.key devuelve el nombre de la tecla pulsada como string.
- * @see https://lenguajejs.com/javascript/eventos/teclado/
+ * @see https://developer.mozilla.org/es/docs/Web/API/KeyboardEvent/key
  */
 function initCharacterCardClicks() {
   var cards = document.querySelectorAll(".character-card");
@@ -617,7 +614,7 @@ function openCharacterModal(id) {
     function (data) {
       /* La API a veces devuelve un array con un objeto, otras veces el objeto directo.
          Array.isArray() me dice si es un array para tratarlo siempre igual.
-         @see https://lenguajejs.com/javascript/arrays/array-isarray/ */
+         @see https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray */
       var character = Array.isArray(data) ? data[0] : data;
       renderModal(character);
     },
@@ -635,7 +632,7 @@ function openCharacterModal(id) {
  * Si intentase acceder directamente a character.wand.wood y wand fuese null,
  * el programa se rompería. El && hace un "short-circuit": si wand es falsi,
  * para y devuelve false sin intentar acceder a .wood.
- * @see https://lenguajejs.com/javascript/objetos/acceso-objetos/
+ * @see https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Working_with_Objects
  *
  * @param {Object} character - Objeto completo del personaje devuelto por la API
  */
@@ -695,7 +692,7 @@ function buildDataItem(label, value) {
  * e.target es el elemento que recibió el click.
  * Comparo e.target === overlay para asegurarme de que el click fue
  * en el fondo y no en el contenido del modal (que también está dentro del overlay).
- * @see https://lenguajejs.com/javascript/eventos/objeto-event/
+ * @see https://developer.mozilla.org/es/docs/Web/API/Event/target  
  */
 function initModalClose() {
   var closeBtn = document.getElementById("modal-close");
@@ -728,9 +725,9 @@ function closeModal() {
  *              Encadeno dos filter() — primero filtra por casa, luego por texto.
  *
  * filter() devuelve un nuevo array sin modificar el original.
- * @see https://lenguajejs.com/javascript/arrays/metodo-filter/
+ * @see https://www.arsys.es/blog/filtrado-de-elementos-en-arrays-javascript-con-filter
  * includes() comprueba si un string contiene otro (devuelve true/false).
- * @see https://lenguajejs.com/javascript/string/metodos-includes/
+ * @see https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String/includes
  */
 function applyFilters() {
   var filtered = allCharactersCache;
@@ -915,7 +912,7 @@ function renderQuestion(index) {
  *
  * parseInt convierte el string del data-index en número para usarlo como índice.
  * Los atributos data-* guardan datos en el HTML:
- * @see https://lenguajejs.com/javascript/dom/dataset/
+ * @see https://www.jscodez.com/dom/getattribute-setattribute-dataset
  *
  * @param {Object} question - Objeto de la pregunta con sus 4 respuestas
  */
@@ -948,7 +945,7 @@ function initAnswerButtons(question) {
  *              Calcula el porcentaje completado y lo aplica directamente con style.width.
  *
  * Modificar estilos inline con element.style:
- * @see https://lenguajejs.com/javascript/dom/cssom/
+ * @see https://developer.mozilla.org/es/docs/Web/API/HTMLElement/style
  *
  * @param {number} index - Pregunta actual (0-based); al terminar se llama con QUIZ_QUESTIONS.length
  */
@@ -966,7 +963,7 @@ function updateProgressBar(index) {
  *
  * Object.keys() devuelve un array con los nombres de las propiedades del objeto.
  * Aquí me da ["g", "s", "r", "h"] y itero sobre ellos para encontrar el máximo.
- * @see https://lenguajejs.com/javascript/objetos/object-keys/
+ * @see https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
  *
  * También muestra el escudo de la casa ganadora — imagen que dibujé yo mismo.
  */
@@ -1029,7 +1026,7 @@ function loadHouseMembers(house) {
     function (data) {
       hideElement("members-loading");
       /* slice(0, 12) me queda con los primeros 12 — no quiero mostrar cientos
-         @see https://lenguajejs.com/javascript/arrays/metodo-slice/ */
+         @see https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/slice */
       renderHouseMembers(data.slice(0, 12));
     },
     function (errorMsg) {
@@ -1111,7 +1108,6 @@ function initDuelo() {
  *
  * Construyo el HTML de las opciones con un string y lo asigno de golpe con innerHTML,
  * en vez de crear elementos uno a uno — más rápido para listas largas.
- * @see https://lenguajejs.com/javascript/dom/crear-elementos-dom/
  *
  * @param {Array} characters - Array completo de personajes
  */
@@ -1136,7 +1132,7 @@ function populateDuelSelect(characters) {
  *              y carga su tarjeta de detalle automáticamente.
  *
  * El evento "change" en un select se dispara cuando cambia la opción seleccionada.
- * @see https://lenguajejs.com/javascript/eventos/formularios/
+ * @see https://www.luisllamas.es/javascript-eventos-en-el-dom/
  */
 function initDuelSelectListener() {
   var select1 = document.getElementById("select-1");
@@ -1194,7 +1190,7 @@ function loadDuelistCard(selectId, cardId) {
  *
  * Los corchetes permiten acceder a propiedades con un nombre dinámico (una variable),
  * algo que no se puede hacer con el punto cuando el nombre no es literal.
- * @see https://lenguajejs.com/javascript/objetos/acceso-objetos/
+ * @see https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Working_with_Objects
  *
  * @param {HTMLElement} container - Elemento contenedor donde insertar la tarjeta
  * @param {Object}      character - Datos del personaje
@@ -1238,11 +1234,10 @@ function initDuelButton() {
  *
  * try/catch para validar que el jugador eligió un mago antes de duelo.
  * Si no eligió, lanzo un Error con throw que el catch captura para mostrar el mensaje.
- * @see https://lenguajejs.com/javascript/excepciones/try-catch-finally/
  *
  * Para la CPU uso filter() para excluir al mago del jugador del pool
  * y luego Math.floor(Math.random() * pool.length) para un índice aleatorio.
- * @see https://lenguajejs.com/javascript/matematicas/math-random/
+ * @see https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Math/random
  * @see https://lenguajejs.com/javascript/arrays/metodo-filter/
  */
 function executeDuel() {
@@ -1300,7 +1295,7 @@ function executeDuel() {
  * un profesor vale más que un alumno, tener patronus es señal de magia fuerte, etc.
  *
  * Math.floor(Math.random() * 3) da 0, 1 o 2 — el factor suerte del duelo.
- * @see https://lenguajejs.com/javascript/matematicas/math-random/
+ * @see https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Math/random
  *
  * @param   {Object} character - Datos del personaje
  * @returns {number} Puntuación total del duelo
