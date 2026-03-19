@@ -3,7 +3,7 @@
  * @description Script principal de Hogwarts Castle.
  *              Aquí va toda la lógica del proyecto: navegación,
  *              llamadas a la API y renderizado dinámico de cada página.
- * @author TuNombre
+ * @author Jazmin Gutierrez Castro
  *
  * Aprendí a hacer peticiones HTTP con fetch aquí:
  * @see https://lenguajejs.com/javascript/peticiones-http/fetch/
